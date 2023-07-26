@@ -1,9 +1,8 @@
 <template>
   <header>
     <nav>
-      <img class="logo" src="../../src/assets/Instagram_logo.svg.png" />
-
       <section class="links">
+        <img class="logo" src="../../src/assets/Instagram_logo.svg.png" />
         <RouterLink to="/"
           ><img
             src="../assets/icons/home.png"

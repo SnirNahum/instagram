@@ -67,6 +67,12 @@ function getEmptyStory() {
   return {
     txt: "",
     imgUrl: "",
+    by: {
+      id: "101",
+      imgUrl:
+        "	https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+      fullname: "Manor Solomon",
+    },
   };
 }
 _createStories();
@@ -86,12 +92,24 @@ function getStories() {
         "https://www.shutterstock.com/image-vector/cute-astronaut-holding-flag-on-600w-2106090470.jpg",
       txt: "Best trip ever1",
       _id: utilService.makeId(),
+      by: {
+        _id: "u101",
+        fullname: "Manor Solomon",
+        imgUrl:
+          "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+      },
     },
     {
       imgUrl:
-        "https://www.shutterstock.com/image-vector/cute-astronaut-holding-flag-on-600w-2106090470.jpg",
+        "https://img.freepik.com/free-vector/cute-astronaut-peace-moon-with-rocket-cartoon-vector-icon-illustration-science-technology-icon_138676-5030.jpg",
       txt: "Best trip ever1",
       _id: utilService.makeId(),
+      by: {
+        _id: "u101",
+        fullname: "Oscar Gloukh",
+        imgUrl:
+          "https://img.uefa.com/imgml/TP/players/13/2023/324x324/250153349.jpg",
+      },
     },
   ];
 }

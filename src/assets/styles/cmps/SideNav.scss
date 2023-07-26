@@ -14,27 +14,34 @@ header {
   }
 
   nav {
-    padding: 27px 7px;
-    margin-top: 2px;
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    height: 100vh;
-    border-right: 1px solid rgb(208, 212, 218);
+    align-items: flex-start;
 
-    .logo {
-      margin-top: 5px;
-      margin-left: 2px;
-      width: 50%;
-    }
+    margin: 0;
+    margin-top: 2px;
+    padding: 27px 7px;
+
+    height: 100vh;
+    width: 325px;
+
+    border-right: 1px solid rgb(208, 212, 218);
 
     .links {
       display: inline-flex;
       flex-direction: column;
+
       margin-top: 30px;
       margin-left: -10px;
+
       width: 214px;
 
+      .logo {
+        position: relative;
+        left: 14px;
+        bottom: 30px;
+        width: 50%;
+      }
       img {
         width: 1.31em;
         margin-right: 15px;
@@ -45,8 +52,10 @@ header {
         display: flex;
         flex-direction: row;
         align-items: center;
+
         margin: 4px;
         padding: 12px;
+
         line-height: 8px;
         border-radius: 5px;
         color: rgb(29, 25, 25);
