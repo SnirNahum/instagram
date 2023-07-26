@@ -1,31 +1,71 @@
 header {
   position: fixed;
-  padding: 10px;
-  width: 18.75em;
-  height: 100vh;
-  z-index: 2;
+  width: 13em;
 
   .loggedin-user {
     padding: 2px 8px;
     border-radius: 1em;
     align-self: flex-end;
-    color: whitesmoke;
     span {
       padding: 4px;
       margin: 10px;
       border-radius: 50%;
     }
   }
+
   nav {
-    padding: 5px 0;
+    padding: 27px 7px;
+    margin-top: 2px;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
-  }
-  .logo {
-    width: 40%;
-  }
-  nav a:not(:first-child) {
-    padding: 0 5px;
-    margin: 10px;
+    height: 100vh;
+    border-right: 1px solid rgb(208, 212, 218);
+
+    .logo {
+      margin-top: 5px;
+      margin-left: 2px;
+      width: 50%;
+    }
+
+    .links {
+      display: inline-flex;
+      flex-direction: column;
+      margin-top: 30px;
+      margin-left: -10px;
+      width: 214px;
+
+      img {
+        width: 1.31em;
+        margin-right: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 4px;
+        padding: 12px;
+        line-height: 8px;
+        border-radius: 5px;
+        color: rgb(29, 25, 25);
+
+        &:hover {
+          background-color: rgb(208, 212, 218);
+          text-decoration: none;
+
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .profileLink {
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
   }
 }

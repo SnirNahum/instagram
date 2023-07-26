@@ -1,6 +1,8 @@
 <template>
   <section>
     <img :src="story.imgUrl" alt="" />
+    <p>{{ story.txt }}</p>
+    <input type="text" placeholder="comment" />
   </section>
 </template>
 

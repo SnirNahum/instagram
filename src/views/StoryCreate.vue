@@ -25,7 +25,7 @@ export default {
           const imageUrl = await this.uploadImage(this.file);
           this.storyToAdd.imgUrl = imageUrl;
         }
-        await this.saveStoryToStore();
+        await this.saveStory();
         showSuccessMsg("Story added");
         this.$router.push("/");
 
@@ -46,7 +46,7 @@ export default {
         reader.readAsDataURL(file);
       });
     },
-    async saveStoryToStore() {
+    async saveStory() {
       const { storyToAdd } = this;
       await this.$store.dispatch("addStory", { story: storyToAdd });
     },

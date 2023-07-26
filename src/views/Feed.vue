@@ -8,10 +8,6 @@
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { storyService } from "../services/story.service.local";
 import StoryList from "../cmps/StoryList.vue";
-import // getActionRemoveStory,
-// getActionUpdateStory,
-// getActionAddStoryMsg,
-"../store/story.store";
 export default {
   data() {
     return {

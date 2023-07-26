@@ -1,22 +1,55 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/">
-        <img class="logo" src="../../src//assets/Instagram_logo.svg.png" />
-      </RouterLink>
-      <RouterLink to="/explore">Explore</RouterLink>
-      <RouterLink to="/">Search</RouterLink>
-      <RouterLink to="/explore">Explore</RouterLink>
-      <RouterLink to="/reels">Reels</RouterLink>
-      <RouterLink to="/messages">Messages</RouterLink>
-      <RouterLink to="/">Notification</RouterLink>
-      <RouterLink to="/StoryCreate">Create</RouterLink>
-      <RouterLink to="/profile">Profile</RouterLink>
+      <img class="logo" src="../../src/assets/Instagram_logo.svg.png" />
 
-      <!-- <RouterLink to="/car">Cars</RouterLink>
-      <RouterLink to="/review">Reviews</RouterLink>
-      <RouterLink to="/chat">Chat</RouterLink>
-      <RouterLink to="/login">Login / Signup</RouterLink> -->
+      <section class="links">
+        <RouterLink to="/"
+          ><img
+            src="../assets/icons/home.png"
+            class="sideNavIcon"
+          />Home</RouterLink
+        >
+        <RouterLink to="/"
+          ><img
+            src="../assets/icons/search.png"
+            class="sideNavIcon"
+          />Search</RouterLink
+        >
+        <RouterLink to="/explore"
+          ><img
+            src="../assets/icons/explore.png"
+            class="sideNavIcon"
+          />Explore</RouterLink
+        >
+        <RouterLink to="/reels">
+          <img
+            src="../assets/icons/reels.png"
+            class="sideNavIcon"
+          />Reels</RouterLink
+        >
+        <RouterLink to="/messages"
+          ><img
+            src="../assets/icons/messages.png"
+            class="sideNavIcon"
+          />Messages</RouterLink
+        >
+        <RouterLink to="/"
+          ><img
+            src="../assets/icons/notifications.png"
+            class="sideNavIcon"
+          />Notification</RouterLink
+        >
+        <RouterLink to="/StoryCreate"
+          ><img
+            src="../assets/icons/createStory.png"
+            class="sideNavIcon"
+          />Create</RouterLink
+        >
+        <RouterLink to="/profile" class="profileLink">
+          <img src="../assets/icons/profilePic.jpg" />Profile</RouterLink
+        >
+      </section>
     </nav>
     <section class="loggedin-user" v-if="loggedInUser">
       <RouterLink :to="`/user/${loggedInUser._id}`">
