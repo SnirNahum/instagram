@@ -1,66 +1,81 @@
 <template>
-  <header>
-    <nav>
-      <section class="links">
-        <img class="logo" src="../../src/assets/Instagram_logo.svg.png" />
-        <RouterLink to="/"
-          ><img
-            src="../assets/icons/home.png"
-            class="sideNavIcon"
-          />Home</RouterLink
-        >
-        <RouterLink to="/"
-          ><img
-            src="../assets/icons/search.png"
-            class="sideNavIcon"
-          />Search</RouterLink
-        >
-        <RouterLink to="/explore"
-          ><img
-            src="../assets/icons/explore.png"
-            class="sideNavIcon"
-          />Explore</RouterLink
-        >
-        <RouterLink to="/reels">
-          <img
-            src="../assets/icons/reels.png"
-            class="sideNavIcon"
-          />Reels</RouterLink
-        >
-        <RouterLink to="/messages"
-          ><img
-            src="../assets/icons/messages.png"
-            class="sideNavIcon"
-          />Messages</RouterLink
-        >
-        <RouterLink to="/"
-          ><img
-            src="../assets/icons/notifications.png"
-            class="sideNavIcon"
-          />Notification</RouterLink
-        >
-        <RouterLink to="/StoryCreate"
-          ><img
-            src="../assets/icons/createStory.png"
-            class="sideNavIcon"
-          />Create</RouterLink
-        >
-        <RouterLink to="/profile" class="profileLink">
-          <img src="../assets/icons/profilePic.jpg" />Profile</RouterLink
-        >
-      </section>
-    </nav>
-    <section class="loggedin-user" v-if="loggedInUser">
-      <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </RouterLink>
-      <span>{{ loggedInUser.score?.toLocaleString() }}</span>
-      <img :src="loggedInUser.imgUrl" />
+  <nav class="side-nav">
+    <section class="side-nav-logo">
+      <RouterLink to="/"
+        ><i class="icon" v-html="getSvg('logo')"></i
+      ></RouterLink>
     </section>
-  </header>
+    <section class="side-nav-links">
+      <RouterLink class="side-nav-link" to="/"
+        ><i class="icon" v-html="getSvg('home')"></i
+        ><span>Home</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/"
+        ><i class="icon" v-html="getSvg('search')"></i
+        ><span>Search</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/explore"
+        ><i class="icon" v-html="getSvg('explore')"></i
+        ><span>Explore</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/reels">
+        <i class="icon" v-html="getSvg('reels')"></i
+        ><span>Reels</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/messages"
+        ><i class="icon" v-html="getSvg('messages')"></i
+        ><span>Messages</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/"
+        ><i class="icon" v-html="getSvg('notification')"></i
+        ><span>Notification</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/StoryCreate"
+        ><i class="icon" v-html="getSvg('create')"></i
+        ><span>Create</span></RouterLink
+      >
+      <RouterLink class="side-nav-link" to="/profile">
+        <img src="../assets/icons/profilePic.jpg" /><span
+          >Profile</span
+        ></RouterLink
+      >
+    </section>
+  </nav>
+  <section class="loggedin-user" v-if="loggedInUser">
+    <RouterLink :to="`/user/${loggedInUser._id}`">
+      {{ loggedInUser.fullname }}
+    </RouterLink>
+    <span>{{ loggedInUser.score?.toLocaleString() }}</span>
+    <img :src="loggedInUser.imgUrl" />
+  </section>
 </template>
 <script>
+import { svgService } from "../services/svg.service";
+
 export default {
+  methods: {
+    getSvg(
+      home,
+      search,
+      explore,
+      reels,
+      messages,
+      notification,
+      create,
+      searchActive
+    ) {
+      return svgService.getInstagramSvgs(
+        home,
+        search,
+        explore,
+        reels,
+        messages,
+        notification,
+        create,
+        searchActive
+      );
+    },
+  },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;

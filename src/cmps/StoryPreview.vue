@@ -9,10 +9,10 @@
     </div>
     <section class="actions">
       <section class="toolbar">
-        <img src="../assets/icons/notifications.png" />
-        <img src="../assets/icons/chat.png" />
-        <img src="../assets/icons/share.png" />
-        <img src="../assets/icons/save.png" />
+        <i class="icon" v-html="getSvg('like')"></i>
+        <i class="icon" v-html="getSvg('comment')"></i>
+        <i class="icon" v-html="getSvg('share')"></i>
+        <i class="icon" v-html="getSvg('save')"></i>
       </section>
       <section class="info">
         <p class="likesCount">{{ story.likes }} 27,171 likes</p>
@@ -23,12 +23,12 @@
         >
           <img :src="story.comments[0].by.imgUrl" />
           <p class="userComments">
-            {{ story.comments[story.comments.length - 1].txt }}
+            {{ story.comments[story.comments?.length - 1].txt }}
           </p>
         </div>
         <RouterLink :to="`/${story._id}`">
-          <p class="viewAllComments" @click="commentModalHandler">
-            View all 212 comments
+          <p class="viewAllComments">
+            View all {{ story.comments?.length }} comments
           </p>
         </RouterLink>
       </section>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { svgService } from "../services/svg.service";
 import CommentAdd from "./Comment/CommentAdd.vue";
 export default {
   props: {
@@ -46,17 +47,17 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      isCommentModalOpen: false,
-    };
-  },
+  // data() {
+  //   return {
+  //     isCommentModalOpen: false,
+  //   };
+  // },
   methods: {
     commentToAdd(comment) {
       this.$emit("commentToAdd", comment);
     },
-    commentModalHandler() {
-      this.isCommentModalOpen = !this.isCommentModalOpen;
+    getSvg(save, share, comment, like) {
+      return svgService.getInstagramSvgs(save, share, comment, like);
     },
   },
   components: { CommentAdd },

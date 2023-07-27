@@ -1,80 +1,51 @@
-header {
-  position: fixed;
-  width: 13em;
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  .loggedin-user {
-    padding: 2px 8px;
-    border-radius: 1em;
-    align-self: flex-end;
-    span {
-      padding: 4px;
-      margin: 10px;
-      border-radius: 50%;
-    }
-  }
-
-  nav {
+  .side-nav-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    padding: 0.5rem 0.75rem 1.25rem 0.35rem;
+    line-height: 0;
 
-    margin: 0;
-    margin-top: 2px;
-    padding: 27px 7px;
+    .side-nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 0.75rem 0.75rem 0.35rem;
+      margin: 0.25rem 0;
+      font-size: 1rem;
 
-    height: 100vh;
-    width: 325px;
+      &:hover {
+        background-color: rgb(240, 240, 240);
+        border-radius: 0.5rem;
 
-    border-right: 1px solid rgb(208, 212, 218);
+        i svg {
+          transform: scale(1.1);
+          transition: transform 0.2s ease-in-out;
+        }
+      }
 
-    .links {
-      display: inline-flex;
-      flex-direction: column;
-
-      margin-top: 30px;
-      margin-left: -10px;
-
-      width: 214px;
-
-      .logo {
-        position: relative;
-        left: 14px;
-        bottom: 30px;
-        width: 50%;
+      span {
+        margin-left: 0.875rem;
       }
       img {
-        width: 1.31em;
-        margin-right: 15px;
-        transition: transform 0.3s ease;
+        width: 14%;
+        border-radius: 50%;
       }
-
-      a {
+      i {
         display: flex;
-        flex-direction: row;
         align-items: center;
-
-        margin: 4px;
-        padding: 12px;
-
-        line-height: 8px;
-        border-radius: 5px;
-        color: rgb(29, 25, 25);
-
-        &:hover {
-          background-color: rgb(208, 212, 218);
-          text-decoration: none;
-
-          img {
-            transform: scale(1.1);
-          }
-        }
-      }
-
-      .profileLink {
-        img {
-          border-radius: 50%;
-        }
+        justify-content: center;
       }
     }
   }
+}
+
+.side-nav-logo {
+  top: 0;
+  width: 13.75rem;
+  height: 4.5625rem;
+  padding: 2.5rem 0.75rem 0.75rem 0.625rem;
+  margin-bottom: 1.1875rem;
 }

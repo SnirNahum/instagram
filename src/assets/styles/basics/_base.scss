@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  // background-color: $clr1;
-  // color: $clr6;
-}
-
 html {
   font-family: montserrat;
   line-height: 1.6;
@@ -34,12 +29,11 @@ h6 {
 section,
 main,
 footer {
-  // padding: 5px;
 }
 
-// img {
-//     width: 100%;
-// }
+img {
+  width: 100%;
+}
 
 p {
   margin: 0 0 1em;
@@ -48,7 +42,4 @@ p {
 
 a {
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
 }

@@ -13,24 +13,13 @@
 }
 
 .storyPreview {
-  /* display: grid; */
-  /* grid-template-columns: 1fr; */
-  /* gap: 10px; */
-  /* border: 1px solid #ddd; */
-
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   padding: 10px;
   background-color: #fff;
 
-  /* max-width: 300px; */
   margin: 0 auto;
-}
-
-.storyPreviewUserInfo {
-  font-weight: bold;
-  //   margin-bottom: 10px;
 }
 
 .toolbar {
@@ -38,7 +27,7 @@
   border-top: 1px solid #ddd;
   padding-top: 9.7px;
 
-  img {
+  i {
     width: 21px;
     margin-right: 18px;
 
@@ -54,20 +43,16 @@
   //   font-weight: bold;
 }
 
-.userComments {
-  font-weight: bold;
-}
-
 .viewAllComments {
   color: #888;
   cursor: pointer;
-  //   margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  margin-top: 13px;
+  margin-top: 10px;
   p {
     margin: 0;
   }
@@ -76,7 +61,7 @@
 .storyHeader {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   img {
     width: 2em;
     border-radius: 50%;

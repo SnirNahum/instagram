@@ -1,11 +1,14 @@
 <template>
   <div class="commentAdd">
     <input type="text" v-model="commentTxt" />
-    <img src="../../assets/icons/share.png" @click="addComment" />
+    <i class="icon" v-html="getSvg('share')" @click="addComment"></i>
+    <!-- <img src="../../assets/icons/share.png"  /> -->
   </div>
 </template>
 
 <script>
+import { svgService } from "../../services/svg.service";
+
 export default {
   props: {
     story: {
@@ -33,27 +36,9 @@ export default {
 
       this.commentTxt = null;
     },
+    getSvg(save, share, comment, like) {
+      return svgService.getInstagramSvgs(save, share, comment, like);
+    },
   },
 };
 </script>
-
-<style scoped lang="scss">
-.commentAdd {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  input {
-    flex-grow: 1;
-
-    border-width: 0 0 1px 0;
-    border-style: none none solid none;
-    border-color: transparent transparent rgb(208, 212, 218) transparent;
-
-    outline: none;
-  }
-  img {
-    width: 21px;
-  }
-}
-</style>

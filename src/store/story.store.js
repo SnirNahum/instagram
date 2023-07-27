@@ -7,12 +7,12 @@ export function getActionRemoveStory(storyId) {
     storyId,
   };
 }
-export function getActionAddStory(story) {
-  return {
-    type: "addStory",
-    story,
-  };
-}
+// export function getActionAddStory(story) {
+//   return {
+//     type: "addStory",
+//     story,
+//   };
+// }
 export function getActionUpdateStory(story) {
   return {
     type: "updateStory",
