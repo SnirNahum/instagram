@@ -17,15 +17,28 @@
       <section class="info">
         <p class="likesCount">{{ story.likes }} 27,171 likes</p>
         <p class="likesCount">{{ story.txt }}</p>
-        <p class="userComments">User comments</p>
-        <p class="viewAllComments">View all 212 comments</p>
+        <div
+          class="commentMiniUser"
+          v-if="story.comments && story.comments.length > 0"
+        >
+          <img :src="story.comments[0].by.imgUrl" />
+          <p class="userComments">
+            {{ story.comments[story.comments.length - 1].txt }}
+          </p>
+        </div>
+        <RouterLink :to="`/${story._id}`">
+          <p class="viewAllComments" @click="commentModalHandler">
+            View all 212 comments
+          </p>
+        </RouterLink>
       </section>
     </section>
-    <input type="text" placeholder="Comment" />
+    <CommentAdd :story="story" @commentToAdd="commentToAdd" />
   </section>
 </template>
 
 <script>
+import CommentAdd from "./Comment/CommentAdd.vue";
 export default {
   props: {
     story: {
@@ -33,5 +46,19 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isCommentModalOpen: false,
+    };
+  },
+  methods: {
+    commentToAdd(comment) {
+      this.$emit("commentToAdd", comment);
+    },
+    commentModalHandler() {
+      this.isCommentModalOpen = !this.isCommentModalOpen;
+    },
+  },
+  components: { CommentAdd },
 };
 </script>

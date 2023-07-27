@@ -1,0 +1,14 @@
+.commentMiniUser {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
+  img {
+    width: 2em;
+    border-radius: 50%;
+  }
+
+  p {
+    margin-left: 0.5em;
+  }
+}

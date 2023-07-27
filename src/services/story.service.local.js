@@ -10,7 +10,7 @@ export const storyService = {
   save,
   remove,
   getEmptyStory,
-  addStoryMsg,
+  addStoryComment,
 };
 
 async function query(filterBy = { txt: "", price: 0 }) {
@@ -47,20 +47,26 @@ async function save(story) {
   return savedStory;
 }
 
-async function addStoryMsg(storyId, txt) {
+async function addStoryComment(storyId, txt) {
   // Later, this is all done by the backend
   const story = await getById(storyId);
-  if (!story.msgs) story.msgs = [];
+  if (!story.comments) story.comments = [];
 
-  const msg = {
+  const comment = {
     id: utilService.makeId(),
-    by: userService.getLoggedinUser(),
+    // by: userService.getLoggedinUser(),
+    by: {
+      id: "101",
+      imgUrl:
+        "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+      fullname: "Manor Solomon",
+    },
     txt,
   };
-  story.msgs.push(msg);
+  story.comments.push(comment);
   await storageService.put(STORAGE_KEY, story);
 
-  return msg;
+  return comment;
 }
 
 function getEmptyStory() {
@@ -70,7 +76,7 @@ function getEmptyStory() {
     by: {
       id: "101",
       imgUrl:
-        "	https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+        "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
       fullname: "Manor Solomon",
     },
   };
@@ -98,6 +104,7 @@ function getStories() {
         imgUrl:
           "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
       },
+      comments: [],
     },
     {
       imgUrl:
@@ -110,6 +117,7 @@ function getStories() {
         imgUrl:
           "https://img.uefa.com/imgml/TP/players/13/2023/324x324/250153349.jpg",
       },
+      comments: [],
     },
   ];
 }

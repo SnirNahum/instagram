@@ -19,26 +19,26 @@ export function getActionUpdateStory(story) {
     story,
   };
 }
-export function getActionAddStoryMsg(storyId) {
-  return {
-    type: "addStoryMsg",
-    storyId,
-    txt: "Stam txt",
-  };
-}
 
 export const storyStore = {
   state: {
     stories: [],
+    story: null,
   },
   getters: {
     stories({ stories }) {
       return stories;
     },
+    story({ story }) {
+      return story;
+    },
   },
   mutations: {
     setStories(state, { stories }) {
       state.stories = stories;
+    },
+    loadStory(state, { story }) {
+      state.story = story;
     },
     addStory(state, { story }) {
       state.stories.push(story);
@@ -50,27 +50,29 @@ export const storyStore = {
     removeStory(state, { storyId }) {
       state.stories = state.stories.filter((story) => story._id !== storyId);
     },
-    addStoryMsg(state, { storyId, msg }) {
+    addStoryComment(state, { storyId, txt }) {
       const story = state.stories.find((story) => story._id === storyId);
-      if (!story.msgs) story.msgs = [];
-      story.msgs.push(msg);
+      if (!story.comments) story.comments = [];
+      story.comments.push(txt);
     },
   },
   actions: {
+    async loadStories(context) {
+      try {
+        const stories = await storyService.query();
+        context.commit({ type: "setStories", stories });
+      } catch (err) {
+        console.log("storyStore: Error in loadStorys", err);
+        throw err;
+      }
+    },
     async addStory(context, { story }) {
       try {
         if (this.file) {
-          // If a file is selected, upload the image and get the Base64 encoded URL
           const imageUrl = await storyService.uploadImage(this.file);
-
-          // Merge the story object with the image URL
           story = { ...story, imgUrl: imageUrl };
         }
-
-        // Call the save method of the storyService to save the story to localStorage
         story = await storyService.save(story);
-
-        // Commit the mutation to add the story to the store's state
         context.commit({ type: "addStory", story });
       } catch (err) {
         console.log("storyStore: Error in addStory", err);
@@ -87,12 +89,12 @@ export const storyStore = {
         throw err;
       }
     },
-    async loadStories(context) {
+    async loadStory({ commit }, { storyId }) {
       try {
-        const stories = await storyService.query();
-        context.commit({ type: "setStories", stories });
+        const story = await storyService.getById(storyId);
+        commit({ type: "loadStory", story });
       } catch (err) {
-        console.log("storyStore: Error in loadStorys", err);
+        console.log("storyStore: Error in loadStory", err);
         throw err;
       }
     },
@@ -105,12 +107,15 @@ export const storyStore = {
         throw err;
       }
     },
-    async addStoryMsg(context, { storyId, txt }) {
+    async addStoryComment({ commit }, { storyId, commentToAdd }) {
       try {
-        const msg = await storyService.addStoryMsg(storyId, txt);
-        context.commit({ type: "addStoryMsg", storyId, msg });
+        const comment = await storyService.addStoryComment(
+          storyId,
+          commentToAdd
+        );
+        commit({ type: "addStoryComment", storyId, txt: comment });
       } catch (err) {
-        console.log("storyStore: Error in addStoryMsg", err);
+        console.log("storyStore: Error in addStoryComment", err);
         throw err;
       }
     },

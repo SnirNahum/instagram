@@ -8,7 +8,7 @@
 //   save,
 //   remove,
 //   getEmptyStory,
-//   addStoryMsg,
+//   addStoryComment,
 // };
 
 // window.cs = storyService; // for console usage
@@ -33,7 +33,7 @@
 //   return savedStory;
 // }
 
-// async function addStoryMsg(storyId, txt) {
+// async function addStoryComment(storyId, txt) {
 //   const savedMsg = await httpService.story(`story/${storyId}/msg`, { txt });
 //   return savedMsg;
 // }
