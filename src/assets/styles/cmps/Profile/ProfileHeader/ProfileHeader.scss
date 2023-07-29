@@ -1,0 +1,10 @@
+.profile-header {
+  display: flex;
+  justify-content: space-evenly;
+  margin-block-start: 30px;
+
+  .avatar {
+    width: 166px;
+    height: 166px;
+  }
+}

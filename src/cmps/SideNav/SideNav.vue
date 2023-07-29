@@ -7,7 +7,7 @@
 
 <script>
 import { svgService } from "../../services/svg.service";
-import SideNavLinks from "./SideNavlinks.vue";
+import SideNavLinks from "./SideNavLinks.vue";
 import SideNavLogo from "./SideNavLogo.vue";
 
 export default {

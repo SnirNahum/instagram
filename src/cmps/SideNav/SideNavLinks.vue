@@ -7,7 +7,7 @@
     <SideNavLink to="/messages" icon="messages" label="Messages" />
     <SideNavLink to="/" icon="notification" label="Notifications" />
     <SideNavLink to="/StoryCreate" icon="create" label="Create" />
-    <SideNavProfileLink to="/profile" label="Profile" img="img" />
+    <SideNavProfileLink to="/profile/userId" label="Profile" />
   </section>
 </template>
 

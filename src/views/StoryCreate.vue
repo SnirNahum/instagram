@@ -3,7 +3,7 @@
     <h2>Add story</h2>
     <input type="text" v-model="storyToAdd.txt" />
     <input type="file" @change="onFileChange" />
-    <button type="submit">Save</button>
+    <button type="submit">Post</button>
   </form>
 </template>
 
@@ -20,20 +20,16 @@ export default {
   },
   methods: {
     async addStory() {
-      try {
-        if (this.file) {
-          const imageUrl = await this.uploadImage(this.file);
-          this.storyToAdd.imgUrl = imageUrl;
+      if (this.file) {
+        try {
+          this.storyToAdd.imgUrl = await this.uploadImage(this.file);
+          await this.saveStory();
+          showSuccessMsg("Story added");
+          this.$router.push("/");
+        } catch (err) {
+          showErrorMsg("Cannot add story");
         }
-        await this.saveStory();
-        showSuccessMsg("Story added");
-        this.$router.push("/");
-
-        this.resetForm();
-      } catch (err) {
-        console.log(err);
-        showErrorMsg("Cannot add story");
-      }
+      } else showErrorMsg("Please upload file");
     },
     onFileChange(event) {
       this.file = event.target.files[0];
@@ -47,8 +43,7 @@ export default {
       });
     },
     async saveStory() {
-      const { storyToAdd } = this;
-      await this.$store.dispatch("addStory", { story: storyToAdd });
+      await this.$store.dispatch("addStory", { story: this.storyToAdd });
     },
     resetForm() {
       this.storyToAdd = storyService.getEmptyStory();

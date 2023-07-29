@@ -1,0 +1,11 @@
+.story-header-stories {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 50px;
+
+  .avatar {
+    width: 82px;
+    height: 86px;
+  }
+}

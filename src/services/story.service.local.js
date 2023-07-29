@@ -105,6 +105,28 @@ function getStories() {
           "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
       },
       comments: [],
+      stories: [
+        {
+          id: utilService.makeId(),
+          imgUrl:
+            "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+        },
+        {
+          id: utilService.makeId(),
+          imgUrl:
+            "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+        },
+        {
+          id: utilService.makeId(),
+          imgUrl:
+            "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+        },
+        {
+          id: utilService.makeId(),
+          imgUrl:
+            "https://resources.premierleague.com/premierleague/photos/players/250x250/p235674.png",
+        },
+      ],
     },
     {
       imgUrl:

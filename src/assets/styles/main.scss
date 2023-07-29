@@ -14,13 +14,21 @@
 // Views
 @import "cmps/Feed.scss";
 @import "cmps/StoryCreate.scss";
-@import "cmps/Profile.scss";
 
 //Side nav
 @import "cmps/SideNav/SideNav.scss";
 @import "cmps/SideNav/SideNavLogo.scss";
 @import "cmps/SideNav/SideNavLinks.scss";
 @import "cmps/SideNav/SideNavLink.scss";
+
+//Profile page
+@import "cmps/Profile/ProfileHeader/Profile.scss";
+@import "cmps/Profile/ProfileHeader/ProfileHeader.scss";
+@import "cmps/Profile/ProfileHeader/ProfileHeaderActions.scss";
+@import "cmps/Profile/ProfileHeader/ProfileHeaderStats.scss";
+@import "cmps/Profile/ProfileHeader/ProfileUserDetails.scss";
+@import "cmps/Profile/ProfileStories.scss";
+@import "cmps/Profile/ProfileUserStories.scss";
 
 // Components
 @import "cmps/UserMsg";
