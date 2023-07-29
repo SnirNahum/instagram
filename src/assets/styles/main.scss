@@ -14,12 +14,20 @@
 // Components
 @import "cmps/UserMsg";
 
-@import "cmps/StoryCreate.scss";
+// Views
 @import "cmps/Feed.scss";
+@import "cmps/StoryCreate.scss";
 @import "cmps/SideNav.scss";
 @import "cmps/Profile.scss";
 
 @import "cmps/StoryPreview.scss";
-@import "cmps/Comment/CommentModal.scss";
-@import "cmps/Comment/CommentMiniUser.scss";
-@import "cmps/Comment/CommentAdd.scss";
+
+// Story
+@import "cmps/Story/StoryHeader.scss";
+@import "cmps/Story/StoryImage.scss";
+@import "cmps/Story/StoryActions.scss";
+
+//Story Comment
+@import "cmps/Story/storyComment/CommentModal.scss";
+@import "cmps/Story/storyComment/commentMiniUser.scss";
+@import "cmps/Story/storyComment/CommentAdd.scss";

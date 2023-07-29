@@ -1,6 +1,6 @@
 <template>
-  <div class="commentAdd">
-    <input type="text" v-model="commentTxt" />
+  <div class="comment-add">
+    <input type="text" v-model="commentTxt" placeholder="Add a comment..." />
     <i class="icon" v-html="getSvg('share')" @click="addComment"></i>
     <!-- <img src="../../assets/icons/share.png"  /> -->
   </div>

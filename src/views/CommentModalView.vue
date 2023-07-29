@@ -1,16 +1,15 @@
 <template>
-  <div class="modal">
+  <div class="modal" @click="onCloseModal">
     <div v-if="story" class="modal-content">
       <img :src="story.imgUrl" alt="" />
-      <section class="commentsSection">
+      <section class="comments-section">
         <div class="comments" v-for="comment in story.comments">
-          <img class="miniUser" :src="comment.by.imgUrl" alt="" />
-          {{ comment.txt }}
+          <img class="mini-user" :src="comment.by.imgUrl" alt="" />
+          <span>{{ comment.txt }}</span>
         </div>
         <CommentAdd :story="story" @commentToAdd="commentToAdd" />
-        <span class="close" @click="returnToFeed">X</span>
+        <span class="closeModalBtn" @click="returnToFeed">X</span>
       </section>
-      <section class="commentsSection"></section>
     </div>
   </div>
 </template>
@@ -53,6 +52,11 @@ export default {
         this.loadStory();
       } catch (error) {
         console.error("Cannot add comment:", error);
+      }
+    },
+    onCloseModal(event) {
+      if (event.target.classList.contains("modal")) {
+        this.returnToFeed();
       }
     },
     returnToFeed() {

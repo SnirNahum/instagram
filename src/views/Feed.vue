@@ -1,5 +1,5 @@
 <template>
-  <div class="feedContainer">
+  <div class="feed-container">
     <StoryList :stories="stories" @commentToAdd="commentToAdd" />
   </div>
 </template>

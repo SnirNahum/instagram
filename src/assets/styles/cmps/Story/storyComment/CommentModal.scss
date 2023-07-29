@@ -6,22 +6,26 @@
   top: 0;
   width: 100%;
   height: 100%;
+
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $clr-6;
 
   .modal-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     background-color: white;
-    padding: 20px;
-    border: 1px solid #888;
     max-width: 80%;
     position: relative;
-    text-align: center;
+    border-radius: 8px;
 
-    .commentsSection {
+    .comments-section {
       display: flex;
       flex-direction: column;
+
+      .closeModalBtn {
+        display: none;
+      }
 
       .close {
         color: #aaa;
@@ -33,9 +37,10 @@
         cursor: pointer;
       }
 
-      .miniUser {
+      .mini-user {
         width: 30px;
         border-radius: 50%;
+        margin-top: 5px;
       }
     }
   }

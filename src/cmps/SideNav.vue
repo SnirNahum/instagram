@@ -28,7 +28,7 @@
       >
       <RouterLink class="side-nav-link" to="/"
         ><i class="icon" v-html="getSvg('notification')"></i
-        ><span>Notification</span></RouterLink
+        ><span>Notifications</span></RouterLink
       >
       <RouterLink class="side-nav-link" to="/StoryCreate"
         ><i class="icon" v-html="getSvg('create')"></i

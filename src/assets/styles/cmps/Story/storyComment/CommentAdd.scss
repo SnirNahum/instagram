@@ -1,0 +1,14 @@
+.comment-add {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: 5px;
+  input {
+    flex-grow: 1;
+    border: none;
+    // padding: 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
