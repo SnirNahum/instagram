@@ -11,15 +11,19 @@
 @import "basics/links";
 @import "basics/forms";
 
-// Components
-@import "cmps/UserMsg";
-
 // Views
 @import "cmps/Feed.scss";
 @import "cmps/StoryCreate.scss";
-@import "cmps/SideNav.scss";
 @import "cmps/Profile.scss";
 
+//Side nav
+@import "cmps/SideNav/SideNav.scss";
+@import "cmps/SideNav/SideNavLogo.scss";
+@import "cmps/SideNav/SideNavLinks.scss";
+@import "cmps/SideNav/SideNavLink.scss";
+
+// Components
+@import "cmps/UserMsg";
 @import "cmps/StoryPreview.scss";
 
 // Story

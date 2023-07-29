@@ -38,7 +38,7 @@ export default {
         });
         this.story = this.$store.getters.story;
       } catch (err) {
-        showErrorMsg("Cannot load toy");
+        showErrorMsg("Cannot load story");
       }
     },
 

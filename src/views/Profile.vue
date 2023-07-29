@@ -1,6 +1,8 @@
 <template>
-  <h1>Profile</h1>
+  <ProfileHeader />
 </template>
 <script>
-export default {};
+import ProfileHeader from "../cmps/ProfileCmps/ProfileHeader.vue";
+
+export default { components: { ProfileHeader } };
 </script>
