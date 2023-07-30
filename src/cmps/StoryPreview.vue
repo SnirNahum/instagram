@@ -5,6 +5,7 @@
     <StoryActions :story="story" />
     <StoryComments :story="story" />
     <CommentAdd :story="story" @commentToAdd="commentToAdd" />
+    <hr />
   </section>
 </template>
 

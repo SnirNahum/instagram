@@ -1,7 +1,9 @@
 <template>
   <nav class="side-nav">
-    <SideNavLogo />
-    <SideNavLinks />
+    <div class="side-nav-container">
+      <SideNavLogo />
+      <SideNavLinks />
+    </div>
   </nav>
 </template>
 
@@ -22,3 +24,4 @@ export default {
   },
 };
 </script>
+<style scoped></style>

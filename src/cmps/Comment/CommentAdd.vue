@@ -1,8 +1,9 @@
 <template>
   <div class="comment-add">
     <input type="text" v-model="commentTxt" placeholder="Add a comment..." />
-    <i class="icon" v-html="getSvg('share')" @click="addComment"></i>
-    <!-- <img src="../../assets/icons/share.png"  /> -->
+    <p v-if="commentTxt?.length > 0" class="comment-btn" @click="addComment">
+      Post
+    </p>
   </div>
 </template>
 

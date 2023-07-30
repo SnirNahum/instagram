@@ -1,13 +1,52 @@
 <template>
   <section class="side-nav-links">
-    <SideNavLink to="/" icon="home" label="Home" />
-    <SideNavLink to="/" icon="search" label="Search" />
-    <SideNavLink to="/explore" icon="explore" label="Explore" />
-    <SideNavLink to="/reels" icon="reels" label="Reels" />
-    <SideNavLink to="/messages" icon="messages" label="Messages" />
-    <SideNavLink to="/" icon="notification" label="Notifications" />
-    <SideNavLink to="/StoryCreate" icon="create" label="Create" />
-    <SideNavProfileLink to="/profile/userId" label="Profile" />
+    <SideNavLink
+      to="/"
+      icon="home"
+      label="Home"
+      :class="{ active: $route.path === '/' }"
+    />
+    <SideNavLink
+      to="/"
+      icon="search"
+      label="Search"
+      :class="{ active: $route.path === '/search' }"
+    />
+    <SideNavLink
+      to="/explore"
+      icon="explore"
+      label="Explore"
+      :class="{ active: $route.path === '/explore' }"
+    />
+    <SideNavLink
+      to="/reels"
+      icon="reels"
+      label="Reels"
+      :class="{ active: $route.path === '/reels' }"
+    />
+    <SideNavLink
+      to="/messages"
+      icon="messages"
+      label="Messages"
+      :class="{ active: $route.path === '/messages' }"
+    />
+    <SideNavLink
+      to="/"
+      icon="notification"
+      label="Notifications"
+      :class="{ active: $route.path === '/notifications' }"
+    />
+    <SideNavLink
+      to="/StoryCreate"
+      icon="create"
+      label="Create"
+      :class="{ active: $route.path === '/StoryCreate' }"
+    />
+    <SideNavProfileLink
+      to="/profile/userId"
+      label="Profile"
+      :class="{ active: $route.path === '/profile' }"
+    />
   </section>
 </template>
 
@@ -22,3 +61,4 @@ export default {
   },
 };
 </script>
+<style scoped></style>

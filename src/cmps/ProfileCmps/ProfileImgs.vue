@@ -1,5 +1,5 @@
 <template>
-  <section class="profileImg">
+  <section class="profile-img">
     <img
       src="https://img.freepik.com/free-vector/cute-astronaut-peace-moon-with-rocket-cartoon-vector-icon-illustration-science-technology-icon_138676-5030.jpg"
     />
@@ -22,7 +22,7 @@
       src="https://img.freepik.com/free-vector/cute-astronaut-peace-moon-with-rocket-cartoon-vector-icon-illustration-science-technology-icon_138676-5030.jpg"
     />
     <img
-      class="profileImg"
+      class="profile-img"
       src="https://img.freepik.com/free-vector/cute-astronaut-peace-moon-with-rocket-cartoon-vector-icon-illustration-science-technology-icon_138676-5030.jpg"
     />
   </section>

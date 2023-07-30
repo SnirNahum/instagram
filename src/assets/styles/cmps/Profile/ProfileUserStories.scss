@@ -1,9 +1,12 @@
-.profileImg {
+.profile-img {
   display: grid;
   grid-column: 3;
   gap: 5px;
   img {
     max-height: 309px;
     max-width: 309px;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }

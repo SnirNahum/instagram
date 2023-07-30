@@ -1,14 +1,32 @@
 <template>
   <div class="modal" @click="onCloseModal">
     <div v-if="story" class="modal-content">
-      <img :src="story.imgUrl" alt="" />
+      <div class="comment-modal-img">
+        <img :src="story.imgUrl" alt="" />
+      </div>
       <section class="comments-section">
-        <div class="comments" v-for="comment in story.comments">
-          <img class="mini-user" :src="comment.by.imgUrl" alt="" />
-          <span>{{ comment.txt }}</span>
+        <div class="story-header">
+          <img class="mini-user" :src="story.by.imgUrl" />
+          <p>
+            {{ story.by.username }}
+          </p>
         </div>
-        <CommentAdd :story="story" @commentToAdd="commentToAdd" />
-        <span class="closeModalBtn" @click="returnToFeed">X</span>
+        <hr />
+        <div class="user-img-comment">
+          <img class="mini-user" :src="story.by.imgUrl" />
+          <span>{{ story.txt }}</span>
+        </div>
+        <section class="comment">
+          <div v-for="comment in story.comments">
+            <img class="mini-user" :src="comment.by.imgUrl" alt="" />
+            <span>{{ comment.txt }}</span>
+          </div>
+        </section>
+        <CommentAdd
+          class="comment-modal-comment-add"
+          :story="story"
+          @commentToAdd="commentToAdd"
+        />
       </section>
     </div>
   </div>
@@ -66,3 +84,8 @@ export default {
   components: { CommentAdd },
 };
 </script>
+<style scoped>
+hr {
+  min-width: 0ch;
+}
+</style>

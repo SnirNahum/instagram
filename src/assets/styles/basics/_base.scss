@@ -10,20 +10,21 @@ html {
 }
 
 body {
-  font-size: rem(18px);
+  font-size: rem(14px);
   margin: 0;
-  font-family: "Lato", sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
 }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// p {
+
+// }
 
 section,
 main,
@@ -35,7 +36,8 @@ img {
 }
 
 p {
-  // margin: 0 0 1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   max-width: 40ch;
 }
 
@@ -43,11 +45,12 @@ a {
   text-decoration: none;
   color: $clr-7;
 }
-
+span {
+  font-weight: 400;
+}
 hr {
-  width: 467px;
-  border: 0.5px thin $clr6;
-  opacity: 0.5;
+  margin-top: 10px;
+  opacity: 0.2;
 }
 
 .avatar {
