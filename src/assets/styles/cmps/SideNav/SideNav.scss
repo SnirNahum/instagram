@@ -1,6 +1,7 @@
 .side-nav {
   margin-inline-start: 14px;
   border-right: 1px solid $clr6;
+  max-width: 500px;
 
   .side-nav-container {
     position: sticky;

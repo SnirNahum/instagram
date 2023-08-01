@@ -1,11 +1,11 @@
 <template>
   <section class="profile-header-actions">
-    <p>Manor Solomon</p>
+    <p>ManorSolomon</p>
     <section class="profile-header-actions-btn">
-      <button>Following</button>
-      <button>Message</button>
+      <button>Edit Profile</button>
+      <button>Dashboard</button>
       <button><i class="icon" v-html="getSvg('addUser')"></i></button>
-      <i class="icon more" v-html="getSvg('more')"></i>
+      <i class="icon more" v-html="getSvg('moreProfile')"></i>
     </section>
   </section>
 </template>
@@ -14,8 +14,8 @@ import { svgService } from "../../services/svg.service";
 
 export default {
   methods: {
-    getSvg(addUser) {
-      return svgService.getInstagramSvgs(addUser);
+    getSvg(moreProfile) {
+      return svgService.getInstagramSvgs(moreProfile);
     },
   },
 };

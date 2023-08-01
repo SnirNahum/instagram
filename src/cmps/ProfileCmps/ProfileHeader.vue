@@ -1,10 +1,12 @@
 <template>
   <section class="profile-header">
     <section class="profile-header-img">
-      <img
-        class="avatar"
-        src="https://i.pinimg.com/564x/8e/6d/ee/8e6deed92dc84de3e9212fd56a0d0a97--johnny-bravo-cartoon-network.jpg"
-      />
+      <div>
+        <img
+          class="avatar"
+          src="https://i.pinimg.com/564x/8e/6d/ee/8e6deed92dc84de3e9212fd56a0d0a97--johnny-bravo-cartoon-network.jpg"
+        />
+      </div>
     </section>
     <section class="profile-header-user-details">
       <ProfileHeaderActions />

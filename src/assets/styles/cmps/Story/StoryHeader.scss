@@ -1,12 +1,11 @@
 .story-header {
   display: flex;
   align-items: flex-end;
+  margin-bottom: 5px;
 
   img {
     width: 32px;
     border-radius: 50%;
-    border: 1px solid
-      linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   }
 
   p {

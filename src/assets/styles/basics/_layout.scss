@@ -43,5 +43,9 @@
 
 .main-layout {
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 300px 1fr 300px;
+  justify-items: center;
+  & > :first-child {
+    justify-self: start;
+  }
 }
