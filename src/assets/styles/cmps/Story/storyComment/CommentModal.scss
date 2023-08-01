@@ -13,19 +13,21 @@
 
   .modal-content {
     display: grid;
-    grid-template-columns: 1fr 0.5fr;
+    grid-template-columns: minmax(auto, 700px) 40%;
     background-color: white;
     max-width: 80%;
     position: relative;
     border-radius: 8px;
-    height: 850px;
+    aspect-ratio: 1/0.8;
+    max-height: 90vh;
 
     .comment-modal-img {
-      display: flex;
-      object-fit: contain;
       background-color: black;
-      flex-direction: row;
-      align-items: center;
+
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
     }
     .comments-section {
       display: flex;

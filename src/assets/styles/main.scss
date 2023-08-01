@@ -13,7 +13,6 @@
 
 // Views
 @import "cmps/Feed.scss";
-@import "cmps/StoryCreate.scss";
 
 //Side nav
 @import "cmps/SideNav/SideNav.scss";
@@ -38,6 +37,7 @@
 @import "cmps/Story/StoryHeader.scss";
 @import "cmps/Story/StoryImage.scss";
 @import "cmps/Story/StoryActions.scss";
+@import "cmps/StoryCreate.scss";
 
 //Story Comment
 @import "cmps/Story/storyComment/CommentModal.scss";

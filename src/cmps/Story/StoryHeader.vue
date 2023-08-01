@@ -1,6 +1,7 @@
 <template>
   <section class="story-header">
     <img :src="user.imgUrl" />
+
     <Router-link to="/profile/userId">
       <p>{{ user.username }}</p></Router-link
     >

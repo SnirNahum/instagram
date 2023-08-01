@@ -37,10 +37,10 @@
       :class="{ active: $route.path === '/notifications' }"
     />
     <SideNavLink
-      to="/StoryCreate"
+      to="storyCreate"
       icon="create"
       label="Create"
-      :class="{ active: $route.path === '/StoryCreate' }"
+      :class="{ active: $route.path === '/storyCreate' }"
     />
     <SideNavProfileLink
       to="/profile/userId"
@@ -55,6 +55,11 @@ import SideNavLink from "./SideNavLink.vue";
 import SideNavProfileLink from "./SideNavProfileLink.vue";
 
 export default {
+  methods: {
+    openStoryCreateModal() {
+      this.$router.push({ path: "/storyCreate" });
+    },
+  },
   components: {
     SideNavLink,
     SideNavProfileLink,

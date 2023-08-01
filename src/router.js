@@ -17,6 +17,11 @@ const routes = [
     component: Feed,
   },
   {
+    path: "/storyCreate",
+    name: "storyCreate",
+    component: Create,
+  },
+  {
     path: "/:storyId",
     name: "CommentModalView",
     component: CommentModalView,
@@ -35,11 +40,6 @@ const routes = [
     path: "/messages",
     name: "Messages",
     component: Messages,
-  },
-  {
-    path: "/storyCreate",
-    name: "StoryCreate",
-    component: Create,
   },
   {
     path: "/profile/:userId",

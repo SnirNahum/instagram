@@ -6,6 +6,7 @@
 
 <script>
 import StoryList from "../cmps/StoryList.vue";
+import StoryCreate from "./StoryCreate.vue";
 export default {
   computed: {
     stories() {
@@ -28,6 +29,6 @@ export default {
       }
     },
   },
-  components: { StoryList },
+  components: { StoryList, StoryCreate },
 };
 </script>
