@@ -37,7 +37,7 @@
       :class="{ active: $route.path === '/notifications' }"
     />
     <SideNavLink
-      to="storyCreate"
+      to="/storyCreate"
       icon="create"
       label="Create"
       :class="{ active: $route.path === '/storyCreate' }"

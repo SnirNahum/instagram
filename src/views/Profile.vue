@@ -1,8 +1,8 @@
 <template>
   <section class="profile-main-layout">
-    <ProfileHeader />
-    <ProfileStories />
-    <ProfileImgs />
+    <ProfileHeader :user="user" />
+    <ProfileStories :user="user" />
+    <ProfileImgs :user="user" />
   </section>
 </template>
 <script>
@@ -13,9 +13,11 @@ import ProfileStories from "../cmps/ProfileCmps/ProfileStories.vue";
 export default {
   data() {
     return {
-      userId: null,
-      stories: this.$store.getters.stories,
+      user: null,
     };
+  },
+  created() {
+    this.user = this.$store.getters.loggedinUser;
   },
   components: {
     ProfileHeader,

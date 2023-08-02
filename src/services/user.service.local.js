@@ -35,21 +35,23 @@ async function update({ _id, score }) {
   user.score = score;
   await storageService.put("user", user);
 
-  // Handle case in which admin updates other user's details
   if (getLoggedinUser()._id === user._id) saveLocalUser(user);
   return user;
 }
 
 async function login(userCred) {
   const users = await storageService.query("user");
-  const user = users.find((user) => user.username === userCred.username);
+  const user = users.find(
+    (user) =>
+      user.username === userCred.username && user.password === userCred.password
+  );
+
   if (user) {
     return saveLocalUser(user);
   }
 }
 
 async function signup(userCred) {
-  userCred.score = 10000;
   if (!userCred.imgUrl)
     userCred.imgUrl =
       "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png";
@@ -70,11 +72,12 @@ async function changeScore(by) {
 }
 
 function saveLocalUser(user) {
-  user = {
-    _id: user._id,
-    fullname: user.fullname,
-    imgUrl: user.imgUrl,
-  };
+  console.log(user);
+  // user = {
+  //   _id: user._id,
+  //   fullname: user.fullname,
+  //   imgUrl: user.imgUrl,
+  // };
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
   return user;
 }
@@ -84,8 +87,77 @@ function getLoggedinUser() {
 }
 
 // Initial data
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
+(async () => {
+  if (!userService.getLoggedinUser()) {
+    const userA = {
+      username: "a",
+      password: "a",
+      fullname: "Muki Muka",
+      imgUrl:
+        "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
+      following: [
+        {
+          _id: "u106",
+          fullname: "Dob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      followers: [
+        {
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      savedStoryIds: ["s104", "s111", "s123"],
+    };
+
+    const userB = {
+      username: "b",
+      password: "b",
+      fullname: "Muki assd",
+      imgUrl:
+        "https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.webp",
+      following: [
+        {
+          _id: "u106",
+          fullname: "Dob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      followers: [
+        {
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      savedStoryIds: ["s104", "s111", "s123"],
+    };
+    await userService.signup(userB);
+
+    const userC = {
+      username: "c",
+      password: "c",
+      fullname: "Muki ccc",
+      imgUrl:
+        "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
+      following: [
+        {
+          _id: "u106",
+          fullname: "Dob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      followers: [
+        {
+          _id: "u105",
+          fullname: "Bob",
+          imgUrl: "http://some-img",
+        },
+      ],
+      savedStoryIds: ["s104", "s111", "s123"],
+    };
+    await userService.signup(userC);
+  }
+})();

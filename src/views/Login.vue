@@ -2,8 +2,8 @@
   <section class="login-container">
     <div class="form-container">
       <div class="login-images">
-        <img src="../assets/imgs/screenshot2.png" />
-        <img src="../assets/imgs/screenshot4.png" />
+        <!-- <img src="../assets/imgs/screenshot2.png" /> -->
+        <!-- <img src="../assets/imgs/screenshot4.png" /> -->
       </div>
       <div class="login-form-wrapper">
         <div class="login-form">
@@ -15,14 +15,16 @@
               <input
                 class="login-input"
                 type="text"
-                placeholder="Phone number, username, or email"
+                v-model="loginCredentials.username"
+                placeholder="Username"
               />
               <input
                 class="login-input"
                 type="password"
+                v-model="loginCredentials.password"
                 placeholder="Password"
               />
-              <button class="login-btn">Log in</button>
+              <button class="login-btn" @click="onSubmitForm">Log in</button>
             </div>
             <p>forgot password?</p>
           </div>
@@ -35,12 +37,31 @@
   </section>
 </template>
 <script>
-import { svgService } from "../services/svg.service";
-
+import { userService } from "../services/user.service.local";
+import { showErrorMsg } from "../services/event-bus.service";
 export default {
+  data() {
+    return {
+      loginCredentials: {
+        username: null,
+        password: null,
+      },
+    };
+  },
   methods: {
-    getSvg(logo) {
-      return svgService.getInstagramSvgs(logo);
+    async onSubmitForm() {
+      try {
+        const user = await this.$store.dispatch("login", {
+          userCred: this.loginCredentials,
+        });
+        if (!user) {
+          showErrorMsg("wrong usernamae or password ");
+        } else {
+          this.$router.push("/");
+        }
+      } catch {
+        (err) => console.log(err);
+      }
     },
   },
 };

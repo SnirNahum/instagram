@@ -1,8 +1,6 @@
 <template>
   <RouterLink class="side-nav-link" :to="to">
-    <img
-      src="https://www.shutterstock.com/image-vector/cute-astronaut-holding-flag-on-600w-2106090470.jpg"
-    />
+    <img :src="userImg.imgUrl" alt="User Image" />
     <span>{{ label }}</span>
   </RouterLink>
 </template>
@@ -18,9 +16,11 @@ export default {
       type: String,
       required: true,
     },
-    // img: {
-    //   type: Image,
-    // },
+  },
+  computed: {
+    userImg() {
+      return this.$store.getters.loggedinUser;
+    },
   },
 };
 </script>
