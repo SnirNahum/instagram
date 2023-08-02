@@ -1,6 +1,6 @@
 <template>
   <section class="main-layout">
-    <AppHeader />
+    <SideNav v-if="shouldDisplaySideNav" />
     <RouterView />
     <UserMsg />
   </section>
@@ -10,8 +10,8 @@
 import { userService } from "./services/user.service";
 import { store } from "./store/store";
 
-import AppHeader from "./cmps/AppHeader.vue";
 import UserMsg from "./cmps/UserMsg.vue";
+import SideNav from "./cmps/SideNav/SideNav.vue";
 
 export default {
   created() {
@@ -19,9 +19,15 @@ export default {
     const user = userService.getLoggedinUser();
     if (user) store.commit({ type: "setLoggedinUser", user });
   },
+  computed: {
+    shouldDisplaySideNav() {
+      const currentRoute = this.$route.path;
+      return !["/login", "/signup"].includes(currentRoute);
+    },
+  },
   components: {
-    AppHeader,
     UserMsg,
+    SideNav,
   },
 };
 </script>

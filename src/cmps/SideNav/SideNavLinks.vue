@@ -57,7 +57,7 @@ import SideNavProfileLink from "./SideNavProfileLink.vue";
 export default {
   methods: {
     openStoryCreateModal() {
-      this.$router.push({ path: "/storyCreate" });
+      // this.$router.push({ path: "/storyCreate" });
     },
   },
   components: {
@@ -66,4 +66,3 @@ export default {
   },
 };
 </script>
-<style scoped></style>

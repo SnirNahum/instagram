@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
+import Login from "./views/Login.vue";
 import Feed from "./views/Feed.vue";
-import InstagramLoginSignup from "./views/InstagramLoginSignup.vue";
 import Reels from "./views/Reels.vue";
 import Messages from "./views/Messages.vue";
 import Create from "./views/StoryCreate.vue";
@@ -11,6 +11,11 @@ import Explore from "./views/Explore.vue";
 import CommentModalView from "./views/CommentModalView.vue";
 
 const routes = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
   {
     path: "/",
     name: "Feed",
@@ -45,11 +50,6 @@ const routes = [
     path: "/profile/:userId",
     name: "Profile",
     component: Profile,
-  },
-  {
-    path: "/LoginSignup",
-    name: "LoginSignup",
-    component: InstagramLoginSignup,
   },
 ];
 

@@ -98,8 +98,10 @@
 .img-container {
   display: flex;
   background-color: whitesmoke;
+
   img {
-    object-fit: contain;
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 }
 

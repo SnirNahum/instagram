@@ -1,30 +1,27 @@
 .profile-img {
-  .image-container {
+  .image-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(50px, 309px));
     grid-column: 3;
     gap: 5px;
+    position: relative;
+    .profile-like-icon {
+      position: absolute;
+      top: 12%;
+      left: 16%;
+    }
+    .profile-comment-icon {
+      position: absolute;
+      top: 12%;
+      left: 10%;
+    }
+
     img {
       width: 100%;
       transition: all 0.1s ease-in-out;
       &:hover {
-        // opacity: 0.5;
         filter: brightness(70%);
       }
     }
   }
 }
-
-// .image-container {
-//   display: grid;
-//   grid-template-columns: repeat(3, minmax(309px, 1fr));
-//   gap: 5px;
-//   img {
-//     width: 100%;
-//     transition: all 0.1s ease-in-out;
-//     &:hover {
-//       // opacity: 0.5;
-//       filter: brightness(70%);
-//     }
-//   }
-// }
