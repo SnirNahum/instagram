@@ -89,33 +89,10 @@ function getLoggedinUser() {
 // Initial data
 (async () => {
   if (!userService.getLoggedinUser()) {
-    const userA = {
-      username: "a",
-      password: "a",
-      fullname: "Muki Muka",
-      imgUrl:
-        "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
-      following: [
-        {
-          _id: "u106",
-          fullname: "Dob",
-          imgUrl: "http://some-img",
-        },
-      ],
-      followers: [
-        {
-          _id: "u105",
-          fullname: "Bob",
-          imgUrl: "http://some-img",
-        },
-      ],
-      savedStoryIds: ["s104", "s111", "s123"],
-    };
-
     const userB = {
-      username: "b",
-      password: "b",
-      fullname: "Muki assd",
+      username: "username1",
+      password: "a",
+      fullname: "Username 1",
       imgUrl:
         "https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.webp",
       following: [
@@ -128,18 +105,19 @@ function getLoggedinUser() {
       followers: [
         {
           _id: "u105",
-          fullname: "Bob",
+          username: "Bob",
           imgUrl: "http://some-img",
         },
       ],
       savedStoryIds: ["s104", "s111", "s123"],
+      tags: [],
     };
     await userService.signup(userB);
 
     const userC = {
-      username: "c",
-      password: "c",
-      fullname: "Muki ccc",
+      username: "username2",
+      password: "b",
+      fullname: "User name 2",
       imgUrl:
         "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
       following: [
@@ -152,11 +130,12 @@ function getLoggedinUser() {
       followers: [
         {
           _id: "u105",
-          fullname: "Bob",
+          username: "Bob",
           imgUrl: "http://some-img",
         },
       ],
       savedStoryIds: ["s104", "s111", "s123"],
+      tags: [],
     };
     await userService.signup(userC);
   }

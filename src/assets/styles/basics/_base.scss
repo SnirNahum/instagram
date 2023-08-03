@@ -69,3 +69,21 @@ hr {
 input {
   opacity: 0.5;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(206, 201, 201);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

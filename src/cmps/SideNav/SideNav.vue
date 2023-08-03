@@ -17,11 +17,6 @@ export default {
     SideNavLinks,
     SideNavLogo,
   },
-  methods: {
-    getSvg(name) {
-      return svgService.getInstagramSvgs(name);
-    },
-  },
 };
 </script>
 <style scoped></style>

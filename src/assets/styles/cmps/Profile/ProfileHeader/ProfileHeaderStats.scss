@@ -16,10 +16,11 @@
 }
 .profile-header-username {
   margin-block-start: 20px;
+  margin-bottom: 0;
   font-size: 14px;
+}
 
-  .profile-header-bio {
-    display: flex;
-    flex-direction: column;
-  }
+.profile-header-bio {
+  display: flex;
+  flex-direction: column;
 }

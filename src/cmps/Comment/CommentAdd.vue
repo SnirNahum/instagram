@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { storyService } from "../../services/story.service.local";
 import { svgService } from "../../services/svg.service";
 
 export default {
@@ -20,20 +21,30 @@ export default {
   data() {
     return {
       commentTxt: null,
+      commentToAdd: storyService.getEmptyComment(),
       storyId: null,
+      user: null,
     };
   },
-  created() {},
+  created() {
+    this.user = this.$store.getters.loggedinUser;
+  },
 
   methods: {
     async addComment() {
       if (!this.commentTxt) {
         return;
       }
-      const commentToAdd = this.commentTxt;
-
       const storyId = this.story._id;
-      this.$emit("commentToAdd", { storyId, commentToAdd });
+      const commentToAdd = { ...this.commentToAdd };
+      commentToAdd.txt = this.commentTxt;
+      commentToAdd.by = {
+        _id: this.user._id,
+        imgUrl: this.user.imgUrl,
+        username: this.user.username,
+      };
+
+      this.$emit("commentToAdd", { storyId }, commentToAdd);
 
       this.commentTxt = null;
     },

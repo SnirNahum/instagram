@@ -17,8 +17,8 @@ export default {
   },
   emits: ["commentToAdd"],
   methods: {
-    commentToAdd(comment) {
-      this.$emit("commentToAdd", comment);
+    commentToAdd(storyId, commentToAdd) {
+      this.$emit("commentToAdd", storyId, commentToAdd);
     },
   },
   components: {

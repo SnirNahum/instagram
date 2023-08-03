@@ -7,6 +7,7 @@
 <script>
 import StoryList from "../cmps/StoryList.vue";
 import StoryCreate from "./StoryCreate.vue";
+
 export default {
   computed: {
     stories() {
@@ -17,10 +18,9 @@ export default {
     this.$store.dispatch({ type: "loadStories" });
   },
   methods: {
-    async commentToAdd({ storyId, commentToAdd }) {
+    async commentToAdd(storyId, commentToAdd) {
       try {
-        await this.$store.dispatch({
-          type: "addStoryComment",
+        await this.$store.dispatch("addStoryComment", {
           storyId,
           commentToAdd,
         });

@@ -1,13 +1,10 @@
 <template>
   <section class="modal">
     <section class="modal-content-create">
-      <!-- Header Section -->
-
       <div class="story-create-header">
-        <p @click="goBack">Back</p>
+        <p v-if="currentStage === 2" @click="goBack">Back</p>
         <h1>Create new post</h1>
-        <p v-if="currentStage === 1" @click="goToNextStage">Next</p>
-        <p v-else @click="addStory">Share</p>
+        <p v-if="currentStage === 2" @click="addStory">Share</p>
       </div>
 
       <!-- Page 1 -->
@@ -42,8 +39,8 @@
         </div>
         <div class="create-details">
           <div class="story-header">
-            <img src="https://robohash.org/2" />
-            <p>username</p>
+            <img :src="user.imgUrl" />
+            <p>{{ user.username }}</p>
           </div>
           <div class="create-input">
             <pre><textarea
@@ -53,7 +50,12 @@
             ></textarea>
             </pre>
           </div>
-          <div class="emoji"><i class="icon" v-html="getSvg('emoji')"></i></div>
+          <div class="input-tools">
+            <div class="emoji">
+              <i class="icon" v-html="getSvg('emoji')"></i>
+            </div>
+            <span>{{ storyToAdd.txt.length }} / 200</span>
+          </div>
           <div class="location">Add location</div>
         </div>
       </div>
@@ -75,7 +77,11 @@ export default {
       isDragOver: false,
       imageUploaded: false,
       filePreview: null,
+      user: null,
     };
+  },
+  created() {
+    this.user = this.$store.getters.loggedinUser;
   },
   methods: {
     goToNextStage() {
@@ -124,14 +130,16 @@ export default {
     async addStory() {
       if (this.file) {
         try {
+          this.storyToAdd.by = {
+            _id: this.user._id,
+            imgUrl: this.user.imgUrl,
+            username: this.user.username,
+            fullname: this.user.fullname,
+          };
           this.storyToAdd.imgUrl = await this.uploadImage(this.file);
+
           await this.saveStory();
           showSuccessMsg("Story added");
-          this.imageUploaded = true;
-          this.currentStage = 3;
-
-          this.imageUploaded = true;
-          this.currentStage = 3;
 
           const createDetails = document.querySelector(".create-details");
           createDetails.classList.toggle("create-details-expanded");
@@ -148,7 +156,8 @@ export default {
     },
     onFileChange(event) {
       this.file = event.target.files[0];
-      this.previewImage(); // Call the previewImage method when the image is selected
+      this.currentStage++;
+      this.previewImage();
     },
     async uploadImage(file) {
       return new Promise((resolve, reject) => {

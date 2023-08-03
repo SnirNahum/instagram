@@ -1,6 +1,6 @@
 <template>
   <section class="profile-header-actions">
-    <p>{{ username.fullname }}</p>
+    <p>{{ user.fullname }}</p>
     <section class="profile-header-actions-btn">
       <button>Edit Profile</button>
       <button>Dashboard</button>
@@ -13,6 +13,12 @@
 import { svgService } from "../../services/svg.service";
 
 export default {
+  props: {
+    user: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
     getSvg(moreProfile) {
       return svgService.getInstagramSvgs(moreProfile);

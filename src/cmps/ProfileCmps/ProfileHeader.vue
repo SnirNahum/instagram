@@ -6,8 +6,8 @@
       </div>
     </section>
     <section class="profile-header-user-details">
-      <ProfileHeaderActions />
-      <ProfileHeaderStats />
+      <ProfileHeaderActions :user="user" />
+      <ProfileHeaderStats :user="user" />
     </section>
   </section>
 </template>

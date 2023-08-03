@@ -2,14 +2,15 @@
   <div class="modal" @click="onCloseModal">
     <div v-if="story" class="modal-content">
       <div class="comment-modal-img">
-        <img :src="story.imgUrl" alt="" />
+        <img :src="story.imgUrl" />
       </div>
-      <section class="comments-section">
+      <div class="comments-section">
         <div class="story-header">
           <img class="mini-user" :src="story.by.imgUrl" />
-          <p>
-            {{ story.by.username }}
-          </p>
+          <div class="comment-info">
+            <p>{{ story.by.username }}</p>
+            <span>labels</span>
+          </div>
         </div>
         <hr />
         <div class="user-img-comment">
@@ -17,17 +18,21 @@
           <span>{{ story.txt }}</span>
         </div>
         <section class="comment">
-          <div v-for="comment in story.comments">
-            <img class="mini-user" :src="comment.by.imgUrl" alt="" />
+          <div
+            v-for="(comment, index) in story.comments"
+            class="users-comments"
+          >
+            <!-- <pre>{{  }}</pre> -->
+            <img class="mini-user" :src="story.comments[index].by.imgUrl" />
             <span>{{ comment.txt }}</span>
           </div>
         </section>
         <CommentAdd
-          class="comment-modal-comment-add"
           :story="story"
           @commentToAdd="commentToAdd"
+          class="comment-add-input"
         />
-      </section>
+      </div>
     </div>
   </div>
 </template>
@@ -60,7 +65,7 @@ export default {
       }
     },
 
-    async commentToAdd({ storyId, commentToAdd }) {
+    async commentToAdd({ storyId }, commentToAdd) {
       try {
         await this.$store.dispatch({
           type: "addStoryComment",
@@ -84,8 +89,3 @@ export default {
   components: { CommentAdd },
 };
 </script>
-<style scoped>
-hr {
-  min-width: 0ch;
-}
-</style>

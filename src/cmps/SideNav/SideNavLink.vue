@@ -1,6 +1,6 @@
 <template>
   <RouterLink class="side-nav-link" :to="to">
-    <i class="icon" v-html="getSvg(icon)"></i>
+    <i class="icon" v-html="currentSvg"></i>
     <span>{{ label }}</span>
   </RouterLink>
 </template>
@@ -23,9 +23,25 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isLogoDisplayed: true,
+      currentSvg: svgService.getInstagramSvgs(this.icon),
+    };
+  },
+  watch: {
+    $route(to) {
+      if (to.path === this.to) {
+        this.toggleSvg();
+      }
+    },
+  },
   methods: {
-    getSvg(name) {
-      return svgService.getInstagramSvgs(name);
+    toggleSvg() {
+      this.isLogoDisplayed = !this.isLogoDisplayed;
+      this.currentSvg = this.isLogoDisplayed
+        ? svgService.getInstagramSvgs(this.icon)
+        : svgService.getInstagramSvgs(this.icon + "Active");
     },
   },
 };

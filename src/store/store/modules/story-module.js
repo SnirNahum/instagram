@@ -44,10 +44,10 @@ export const storyStore = {
     removeStory(state, { storyId }) {
       state.stories = state.stories.filter((story) => story._id !== storyId);
     },
-    addStoryComment(state, { storyId, txt }) {
+    addStoryComment(state, { storyId, commentToAdd }) {
       const story = state.stories.find((story) => story._id === storyId);
       if (!story.comments) story.comments = [];
-      story.comments.push(txt);
+      story.comments.push(commentToAdd);
     },
   },
   actions: {
@@ -61,7 +61,6 @@ export const storyStore = {
       }
     },
     async addStory({ commit }, { story }) {
-      console.log(story);
       try {
         story = await storyService.save(story);
         commit({ type: "addStory", story });
@@ -99,12 +98,14 @@ export const storyStore = {
       }
     },
     async addStoryComment({ commit }, { storyId, commentToAdd }) {
+      console.log(storyId);
+      console.log(commentToAdd);
       try {
-        const comment = await storyService.addStoryComment(
+        commentToAdd = await storyService.addStoryComment(
           storyId,
           commentToAdd
         );
-        commit({ type: "addStoryComment", storyId, txt: comment });
+        commit("addStoryComment", { storyId, commentToAdd });
       } catch (err) {
         console.log("storyStore: Error in addStoryComment", err);
         throw err;

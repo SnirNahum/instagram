@@ -1,27 +1,28 @@
 .modal {
   .modal-content-create {
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px auto;
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content auto;
     grid-template-areas:
       "header"
       "content";
-    width: 50vw;
+    width: 40vw;
+    max-height: 70vh;
     background-color: white;
     position: relative;
     border-radius: 8px;
-    aspect-ratio: 1/0.8;
-    max-height: 80vh;
+    aspect-ratio: 1 / 0.8;
+
+    @media (max-width: 414px) {
+      width: 90vw;
+      max-height: 80vh;
+    }
   }
 
   .upload-section {
     grid-area: content;
   }
   .preview-container {
-    // display: grid;
-    // grid-template-columns: minmax(auto, 700px) 20%;
-    // grid-area: content;
-
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
@@ -35,6 +36,8 @@
     p {
       margin: 0;
       cursor: pointer;
+      color: $clr1;
+      font-weight: 600;
     }
 
     h1 {
@@ -70,7 +73,6 @@
   }
 }
 .create-details {
-  padding: 10px;
   .create-input {
     margin-top: 10px;
   }
@@ -79,7 +81,7 @@
     word-break: break-word;
     height: 168px;
     font-family: $font1;
-    // width: 100%;
+    width: 100%;
     font-size: 16px;
     border: none;
     resize: none;
@@ -88,10 +90,15 @@
     }
   }
   .location {
-    padding: 10px;
+    padding: 7.5px;
     font-size: 16px;
     border-top: 1px solid $clr6;
     border-bottom: 1px solid $clr6;
+  }
+  @media (max-width: 800px) {
+    .create-input {
+      margin-top: 5px;
+    }
   }
 }
 
@@ -112,4 +119,9 @@
     padding: 8px;
     font-weight: 600;
   }
+}
+.input-tools {
+  display: flex;
+  justify-content: space-between;
+  padding: 7.5px;
 }
