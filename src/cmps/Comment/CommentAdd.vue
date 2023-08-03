@@ -9,7 +9,6 @@
 
 <script>
 import { storyService } from "../../services/story.service.local";
-import { svgService } from "../../services/svg.service";
 
 export default {
   props: {
@@ -47,9 +46,6 @@ export default {
       this.$emit("commentToAdd", { storyId }, commentToAdd);
 
       this.commentTxt = null;
-    },
-    getSvg(save, share, comment, like) {
-      return svgService.getInstagramSvgs(save, share, comment, like);
     },
   },
 };

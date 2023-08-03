@@ -12,7 +12,7 @@
 <script>
 import StoryHeader from "./Story/StoryHeader.vue";
 import StoryImage from "./Story/StoryImage.vue";
-import StoryActions from "./Story/storyActions.vue";
+import StoryActions from "./Story/StoryActions.vue";
 import StoryComments from "./Story/StoryComments.vue";
 import CommentAdd from "./Comment/CommentAdd.vue";
 

@@ -22,7 +22,6 @@
             v-for="(comment, index) in story.comments"
             class="users-comments"
           >
-            <!-- <pre>{{  }}</pre> -->
             <img class="mini-user" :src="story.comments[index].by.imgUrl" />
             <span>{{ comment.txt }}</span>
           </div>

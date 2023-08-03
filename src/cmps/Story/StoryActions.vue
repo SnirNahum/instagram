@@ -1,9 +1,14 @@
 <template>
   <section class="actions">
     <section class="toolbar">
-      <i class="icon" v-html="getSvg('like')"></i>
-      <RouterLink class="router-link-comment" :to="`/${story._id}`"
-        ><i class="icon" v-html="getSvg('comment')"></i>
+      <i
+        @click="addLike"
+        class="icon"
+        :class="{ bounce: isLiked }"
+        v-html="likeSvg"
+      ></i>
+      <RouterLink class="router-link-comment" :to="`/${story._id}`">
+        <i class="icon" v-html="getSvg('comment')"></i>
       </RouterLink>
       <i class="icon" v-html="getSvg('share')"></i>
       <i class="icon" v-html="getSvg('save')"></i>
@@ -22,11 +27,29 @@ export default {
       required: true,
     },
   },
-  methods: {
-    getSvg(save, share, comment, like) {
-      return svgService.getInstagramSvgs(save, share, comment, like);
+  data() {
+    return {
+      isLiked: false,
+    };
+  },
+  computed: {
+    likeSvg() {
+      return this.isLiked ? this.getSvg("likeActive") : this.getSvg("like");
     },
   },
-  components: { RouterLink },
+  methods: {
+    addLike() {
+      this.isLiked = !this.isLiked;
+      const likedBy = this.$store.getters.loggedinUser._id;
+      console.log(likedBy);
+      // this.$emit("addLike", storyId, story.by._id);
+    },
+    getSvg(like) {
+      return svgService.getInstagramSvgs(like);
+    },
+  },
+  components: {
+    RouterLink,
+  },
 };
 </script>

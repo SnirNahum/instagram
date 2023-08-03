@@ -28,16 +28,25 @@
 
       img {
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        // object-fit: contain;
+        border-bottom-left-radius: 8px;
+        border-top-left-radius: 8px;
       }
     }
     .comments-section {
       display: flex;
       flex-direction: column;
+      .story-header {
+        padding: 7.5px;
+        margin-bottom: 5px;
+        p {
+          margin-left: 0;
+        }
+      }
       .mini-user {
-        width: 30px;
+        width: 36px;
         border-radius: 50%;
-        background-color: violet;
       }
 
       hr {

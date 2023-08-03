@@ -36,7 +36,7 @@
       @update-active="updateActiveLink"
     />
     <SideNavLink
-      to="/"
+      to="/notifications"
       icon="notification"
       label="Notifications"
       :class="{ active: $route.path === '/notifications' }"
@@ -50,7 +50,7 @@
       @update-active="updateActiveLink"
     />
     <SideNavProfileLink
-      to="/profile/userId"
+      :to="user ? `/profile/${user._id}` : '/'"
       label="Profile"
       :class="{ active: $route.path === '/profile' }"
     />
@@ -65,7 +65,11 @@ export default {
   data() {
     return {
       activeLink: null,
+      user: null,
     };
+  },
+  created() {
+    this.user = this.$store.getters.loggedinUser;
   },
   methods: {
     updateActiveLink(icon) {

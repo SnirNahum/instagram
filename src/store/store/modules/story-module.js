@@ -51,10 +51,14 @@ export const storyStore = {
     },
   },
   actions: {
-    async loadStories(context) {
+    async loadStories({ commit }, filterBy) {
+      if (!filterBy)
+        filterBy = {
+          userId: "",
+        };
       try {
-        const stories = await storyService.query();
-        context.commit({ type: "setStories", stories });
+        const stories = await storyService.query(filterBy);
+        commit({ type: "setStories", stories });
       } catch (err) {
         console.log("storyStore: Error in loadStorys", err);
         throw err;
@@ -98,8 +102,6 @@ export const storyStore = {
       }
     },
     async addStoryComment({ commit }, { storyId, commentToAdd }) {
-      console.log(storyId);
-      console.log(commentToAdd);
       try {
         commentToAdd = await storyService.addStoryComment(
           storyId,

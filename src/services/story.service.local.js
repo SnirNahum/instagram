@@ -14,17 +14,15 @@ export const storyService = {
   getEmptyComment,
 };
 
-async function query(filterBy = { txt: "", price: 0 }) {
+async function query(filterBy) {
   var stories = await storageService.query(STORAGE_KEY);
-  if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, "i");
-    stories = stories.filter(
-      (story) => regex.test(story.txt) || regex.test(story.imgUrl)
-    );
+  if (filterBy.userId) {
+    // const regex = new RegExp(filterBy.txt, "i");
+    stories = stories.filter((story) => story.by._id === filterBy.userId);
   }
-  if (filterBy.price) {
-    stories = stories.filter((story) => story.price <= filterBy.price);
-  }
+  // if (filterBy.price) {
+  //   stories = stories.filter((story) => story.price <= filterBy.price);
+  // }
   return stories;
 }
 
@@ -67,7 +65,6 @@ function getEmptyStory() {
     tags: [],
     comments: [],
     by: {
-      _id: "",
       imgUrl: "",
       username: "",
       fullname: "",
@@ -88,7 +85,7 @@ function getEmptyComment() {
     _id: utilService.makeId(),
   };
 }
-_createStories();
+// _createStories();
 function _createStories() {
   let stories = utilService.loadFromStorage(STORAGE_KEY);
   if (!stories || !stories.length) {
@@ -96,8 +93,4 @@ function _createStories() {
     utilService.saveToStorage(STORAGE_KEY, stories);
   }
   return stories;
-}
-
-function getStories() {
-  return [];
 }

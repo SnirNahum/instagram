@@ -90,9 +90,9 @@ function getLoggedinUser() {
 (async () => {
   if (!userService.getLoggedinUser()) {
     const userB = {
-      username: "username1",
+      fullname: "Bobby Kapon",
       password: "a",
-      fullname: "Username 1",
+      username: "bob_b.kap",
       imgUrl:
         "https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.webp",
       following: [
@@ -109,15 +109,16 @@ function getLoggedinUser() {
           imgUrl: "http://some-img",
         },
       ],
-      savedStoryIds: ["s104", "s111", "s123"],
+      savedStoryIds: [],
       tags: [],
+      myStories: [],
     };
     await userService.signup(userB);
 
     const userC = {
-      username: "username2",
-      password: "b",
-      fullname: "User name 2",
+      username: "Camilla Turtuga",
+      password: "n",
+      fullname: "cami_tuga",
       imgUrl:
         "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
       following: [
@@ -134,8 +135,9 @@ function getLoggedinUser() {
           imgUrl: "http://some-img",
         },
       ],
-      savedStoryIds: ["s104", "s111", "s123"],
+      savedStoryIds: [],
       tags: [],
+      myStories: [],
     };
     await userService.signup(userC);
   }

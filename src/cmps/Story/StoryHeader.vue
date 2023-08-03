@@ -2,7 +2,7 @@
   <section class="story-header">
     <img :src="user.imgUrl" />
 
-    <Router-link to="/profile/userId">
+    <Router-link :to="`/profile/${user._id}`">
       <p>{{ user.username }}</p></Router-link
     >
     <i class="icon" v-html="getSvg('more')"></i>
