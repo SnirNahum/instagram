@@ -1,9 +1,17 @@
 <template>
-  <section class="modal">
+  <section class="modal" @click="onCloseModal">
     <section class="modal-content-create">
       <div class="story-create-header">
-        <p v-if="currentStage === 2" @click="goBack">Back</p>
+        <p v-if="currentStage === 1"></p>
+        <i
+          v-if="currentStage === 2"
+          class="icon"
+          v-html="getSvg('backBtn')"
+          @click="goBack"
+          style:cu
+        ></i>
         <h1>Create new post</h1>
+        <p v-if="currentStage === 1"></p>
         <p v-if="currentStage === 2" @click="addStory">Share</p>
       </div>
 
@@ -175,8 +183,13 @@ export default {
       this.file = null;
     },
 
-    getSvg(emoji) {
-      return svgService.getInstagramSvgs(emoji);
+    getSvg(backBtn) {
+      return svgService.getInstagramSvgs(backBtn);
+    },
+    onCloseModal(event) {
+      if (event.target.classList.contains("modal")) {
+        this.$router.go(-1);
+      }
     },
   },
 };

@@ -2,32 +2,26 @@
   <section class="profile-img">
     <div class="image-container">
       <div class="image-wrapper">
-        <img
+        <router-link
           v-for="story in userStories"
-          :src="story.imgUrl"
+          :to="`/${story._id}`"
           :key="story._id"
-        />
+        >
+          <img :src="story.imgUrl" :key="story._id" />
+        </router-link>
       </div>
     </div>
   </section>
 </template>
+
 <script>
 export default {
   props: {
-    user: {
-      type: Object,
-      required: true,
-    },
     userStories: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },
-
-  methods: {
-    // getSvg(like) {
-    //   return svgService.getInstagramSvgs(like);
-    // },
-  },
+  methods: {},
 };
 </script>

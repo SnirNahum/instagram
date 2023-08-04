@@ -2,12 +2,12 @@
   <section class="profile-header">
     <section class="profile-header-img">
       <div>
-        <img class="avatar" :src="user.imgUrl" />
+        <img v-if="user" class="avatar" :src="user.imgUrl" />
       </div>
     </section>
     <section class="profile-header-user-details">
       <ProfileHeaderActions :user="user" />
-      <ProfileHeaderStats :user="user" />
+      <ProfileHeaderStats :user="user" :userStories="userStories" />
     </section>
   </section>
 </template>
@@ -21,8 +21,11 @@ export default {
       type: Object,
       required: true,
     },
+    userStories: {
+      type: Array,
+      required: true,
+    },
   },
-
   components: {
     ProfileHeaderActions,
     ProfileHeaderStats,

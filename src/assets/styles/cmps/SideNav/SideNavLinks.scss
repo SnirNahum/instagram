@@ -3,8 +3,9 @@
   flex-direction: column;
   padding: 0.5rem 0.75rem 1.25rem 0.35rem;
   line-height: 0;
-}
-.side-nav-links .active {
-  background-color: $clr7;
-  border-radius: 8px;
+
+  .active {
+    background-color: $clr7;
+    border-radius: 8px;
+  }
 }

@@ -4,6 +4,7 @@ export const userStore = {
   state: {
     loggedinUser: null,
     users: [],
+    user: {},
     isLoading: false,
   },
   getters: {
@@ -16,6 +17,9 @@ export const userStore = {
     usersExcludeMe({ users, loggedinUser }) {
       return users.filter((u) => u._id !== loggedinUser._id);
     },
+    loadUser({ user }) {
+      return user;
+    },
     usersIsLoading({ isLoading }) {
       return isLoading;
     },
@@ -27,6 +31,9 @@ export const userStore = {
     },
     setUsers(state, { users }) {
       state.users = users;
+    },
+    loadUser(state, { user }) {
+      state.user = user;
     },
     setIsLoading(state, { isLoading }) {
       state.isLoading = isLoading;
@@ -78,6 +85,14 @@ export const userStore = {
         console.log("userStore: Error in loadUsers", err);
         throw err;
       }
+    },
+    async loadUser({ commit }, { userId }) {
+      try {
+        const user = await userService.getById(userId);
+
+        commit({ type: "loadUser", user });
+        return user;
+      } catch (err) {}
     },
     async removeUser({ commit }, { userId }) {
       try {

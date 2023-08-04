@@ -116,9 +116,9 @@ function getLoggedinUser() {
     await userService.signup(userB);
 
     const userC = {
-      username: "Camilla Turtuga",
+      fullname: "Camilla Turtuga",
       password: "n",
-      fullname: "cami_tuga",
+      username: "cami_tuga",
       imgUrl:
         "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?4d355bd",
       following: [

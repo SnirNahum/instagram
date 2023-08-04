@@ -1,8 +1,14 @@
 <template>
-  <section class="profile-header-stats">
-    <p class="profile-header-stats"><span>40</span> posts</p>
-    <p class="profile-header-stats"><span>380 </span> followers</p>
-    <p class="profile-header-stats"><span>584</span> Following</p>
+  <section class="profile-header-stats" v-if="userStories.length">
+    <p class="profile-header-stats">
+      <span>{{ userStories.length }}</span> posts
+    </p>
+    <p class="profile-header-stats">
+      <span>{{ user.followers.length }} </span> followers
+    </p>
+    <p class="profile-header-stats">
+      <span>{{ user.following.length }}</span> Following
+    </p>
   </section>
   <!-- <pre>{{ user }}</pre> -->
   <h2 class="profile-header-username">{{ user.username }}</h2>
@@ -18,6 +24,13 @@ export default {
       type: Object,
       requred: true,
     },
+    userStories: {
+      type: Array,
+      requred: true,
+    },
+  },
+  created() {
+    console.log(this.userStories);
   },
 };
 </script>

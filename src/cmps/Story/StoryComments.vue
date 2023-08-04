@@ -1,17 +1,12 @@
 <template>
   <section class="story-info">
-    <p class="likes-count">{{ story.likes?.length }} 22,737 likes</p>
-    <p>
+    <p v-if="story.likedBy.length > 0" class="likes-count">{{ likesCount }}</p>
+    <p v-if="story.txt.length > 0">
       {{ story.by.username }} <span>{{ story.txt }}</span>
     </p>
     <RouterLink :to="`/${story._id}`">
       <span class="view-all-comments">
-        <span v-if="story.comments?.length > 1">
-          View all {{ story.comments.length }} comments</span
-        >
-        <span v-else-if="story.comments?.length === 1"> View comment</span>
-        <span v-else="!story.comments?.length">Be the first to comment</span>
-        <!-- View all 147 comments -->
+        {{ commentMessage }}
       </span>
     </RouterLink>
     <div
@@ -34,6 +29,25 @@ export default {
     story: {
       type: Object,
       required: true,
+    },
+  },
+  computed: {
+    commentMessage() {
+      const commentCount = this.story.comments?.length || 0;
+
+      if (commentCount > 1) {
+        return `View all ${commentCount} comments`;
+      } else if (commentCount === 1) {
+        return "View comment";
+      } else {
+        return "Be the first to comment";
+      }
+    },
+    likesCount() {
+      const likeCount = this.story.likedBy?.length || 0;
+      if (likeCount > 1) {
+        return `${likeCount} likes`;
+      } else return `${likeCount} like`;
     },
   },
 };

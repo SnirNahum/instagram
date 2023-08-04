@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     username() {
-      return this.$store.getters.loggedinUser;
+      return this.$store.getters.loadUser;
     },
   },
 };

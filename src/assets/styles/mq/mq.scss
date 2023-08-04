@@ -1,0 +1,51 @@
+@media (max-width: 450px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "feed"
+      "navbar";
+    position: relative;
+    height: 100vh;
+    .main-layout :first-child {
+      justify-self: auto;
+    }
+  }
+  .side-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    grid-area: navbar;
+    position: absolute;
+    bottom: 0;
+    min-height: 20px;
+    z-index: 1;
+    .side-nav-logo {
+      display: none;
+    }
+    .side-nav-links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: z-index 0.3s;
+    }
+  }
+
+  .side-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      display: none;
+    }
+  }
+
+  .feed-container {
+  }
+}

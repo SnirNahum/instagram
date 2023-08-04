@@ -45,7 +45,9 @@
   display: grid;
   grid-template-columns: 300px 1fr 300px;
   justify-items: center;
-  & > :first-child {
-    justify-self: start;
-  }
+  height: 100vh;
+
+  // & > :first-child {
+  //   justify-self: start;
+  // }
 }
