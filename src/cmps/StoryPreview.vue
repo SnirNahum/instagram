@@ -2,7 +2,7 @@
   <section class="story-preview">
     <StoryHeader :user="story.by" />
     <StoryImage :imgUrl="story.imgUrl" />
-    <StoryActions :story="story" />
+    <StoryActions :story="story" @addStoryLike="addStoryLike" />
     <StoryComments :story="story" />
     <CommentAdd :story="story" @commentToAdd="commentToAdd" />
     <hr />
@@ -26,6 +26,9 @@ export default {
   methods: {
     commentToAdd({ storyId }, commentToAdd) {
       this.$emit("commentToAdd", storyId, commentToAdd);
+    },
+    addStoryLike(storyId, userId) {
+      this.$emit("addStoryLike", storyId, userId);
     },
   },
   components: {

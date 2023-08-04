@@ -113,5 +113,14 @@ export const storyStore = {
         throw err;
       }
     },
+    async addStoryLike({ commit }, { storyId, userId }) {
+      try {
+        const story = await storyService.addStoryLike(storyId, userId);
+
+        commit("updateStory", { story });
+      } catch (err) {
+        throw err;
+      }
+    },
   },
 };

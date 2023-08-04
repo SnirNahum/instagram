@@ -2,9 +2,9 @@
   <section class="actions">
     <section class="toolbar">
       <i
-        @click="addLike"
+        @click="addStoryLike"
         class="icon"
-        :class="{ bounce: isLiked }"
+        :class="{ bounce: isStoryLiked }"
         v-html="likeSvg"
       ></i>
       <RouterLink class="router-link-comment" :to="`/${story._id}`">
@@ -29,20 +29,26 @@ export default {
   },
   data() {
     return {
-      isLiked: false,
+      isStoryLiked: false,
+      user: null,
     };
+  },
+  created() {
+    this.user = this.$store.getters.loggedinUser;
+    this.isStoryLiked = this.story.likedBy.includes(this.user._id);
   },
   computed: {
     likeSvg() {
-      return this.isLiked ? this.getSvg("likeActive") : this.getSvg("like");
+      return this.isStoryLiked
+        ? this.getSvg("likeActive")
+        : this.getSvg("like");
     },
   },
   methods: {
-    addLike() {
-      this.isLiked = !this.isLiked;
-      const likedBy = this.$store.getters.loggedinUser._id;
-      console.log(likedBy);
-      // this.$emit("addLike", storyId, story.by._id);
+    addStoryLike() {
+      this.isStoryLiked = !this.isStoryLiked;
+      const userId = this.user._id;
+      this.$emit("addStoryLike", this.story._id, userId);
     },
     getSvg(like) {
       return svgService.getInstagramSvgs(like);

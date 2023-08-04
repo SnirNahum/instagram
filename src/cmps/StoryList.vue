@@ -4,6 +4,7 @@
     :key="story._id"
     :story="story"
     @commentToAdd="commentToAdd"
+    @addStoryLike="addStoryLike"
   />
 </template>
 <script>
@@ -15,10 +16,13 @@ export default {
       required: true,
     },
   },
-  emits: ["commentToAdd"],
+  emits: ["commentToAdd", "addStoryLike"],
   methods: {
     commentToAdd(storyId, commentToAdd) {
       this.$emit("commentToAdd", storyId, commentToAdd);
+    },
+    addStoryLike(storyId, userId) {
+      this.$emit("addStoryLike", storyId, userId);
     },
   },
   components: {

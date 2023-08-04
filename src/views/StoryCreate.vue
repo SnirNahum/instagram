@@ -107,26 +107,30 @@ export default {
         this.currentStage--;
       }
     },
-    onDrop(event) {
+    async onDrop(event) {
       event.preventDefault();
       this.file = event.dataTransfer.files[0];
-      setTimeout(() => {
-        this.goToNextStage();
-      }, 500);
-      this.previewImage();
+
+      await this.previewImage();
+
+      this.goToNextStage();
     },
-    previewImage() {
+    async previewImage() {
       if (!this.file) {
         this.filePreview = null;
         return;
       }
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.filePreview = reader.result;
-      };
-      reader.readAsDataURL(this.file);
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.filePreview = reader.result;
+          resolve();
+        };
+        reader.readAsDataURL(this.file);
+      });
     },
+
     onDragOver(event) {
       event.preventDefault();
       this.isDragOver = true;
@@ -159,13 +163,15 @@ export default {
       }
       this.$router.push("/");
     },
-    onFileClick() {
+    async onFileClick() {
       this.$refs.fileInput.click();
     },
-    onFileChange(event) {
+    async onFileChange(event) {
       this.file = event.target.files[0];
-      this.currentStage++;
-      this.previewImage();
+
+      await this.previewImage();
+
+      this.goToNextStage();
     },
     async uploadImage(file) {
       return new Promise((resolve, reject) => {

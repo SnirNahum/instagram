@@ -1,6 +1,10 @@
 <template>
   <div class="feed-container">
-    <StoryList :stories="stories" @commentToAdd="commentToAdd" />
+    <StoryList
+      :stories="stories"
+      @commentToAdd="commentToAdd"
+      @addStoryLike="addStoryLike"
+    />
   </div>
 </template>
 
@@ -26,6 +30,16 @@ export default {
         });
       } catch (error) {
         console.error("Cannot add comment:", error);
+      }
+    },
+    async addStoryLike(storyId, userId) {
+      try {
+        await this.$store.dispatch("addStoryLike", {
+          storyId,
+          userId,
+        });
+      } catch (error) {
+        console.log.error("Cannot add like: ", error);
       }
     },
   },

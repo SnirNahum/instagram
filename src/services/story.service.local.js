@@ -11,6 +11,7 @@ export const storyService = {
   remove,
   getEmptyStory,
   addStoryComment,
+  addStoryLike,
   getEmptyComment,
 };
 
@@ -50,11 +51,28 @@ async function addStoryComment(storyId, commentToAdd) {
   // Later, this is all done by the backend
 
   const story = await getById(storyId);
-  if (!story.comments) story.comments = [];
+  // if (!story.comments) story.comments = [];
   story.comments.push(commentToAdd);
   await storageService.put(STORAGE_KEY, story);
 
   return commentToAdd;
+}
+
+async function addStoryLike(storyId, userId) {
+  const story = await getById(storyId);
+
+  if (!story.likedBy) {
+    story.likedBy = [];
+  }
+
+  const idx = story.likedBy.findIndex((s) => s === userId);
+  if (idx === -1) {
+    story.likedBy.push(userId);
+  } else {
+    story.likedBy.splice(idx, 1);
+  }
+  await storageService.put(STORAGE_KEY, story);
+  return story;
 }
 
 function getEmptyStory() {
