@@ -1,6 +1,8 @@
 <template>
   <section class="modal" @click="onCloseModal">
     <section class="modal-content-create">
+      <Driver v-if="showGuidedTour" @tour-complete="handleTourComplete" />
+
       <div class="story-create-header">
         <p v-if="currentStage === 1"></p>
         <i
@@ -12,7 +14,13 @@
         ></i>
         <h1>Create new post</h1>
         <p v-if="currentStage === 1"></p>
-        <p v-if="currentStage === 2" @click="addStory">Share</p>
+        <p
+          v-if="currentStage === 2"
+          class="create-story-share"
+          @click="addStory"
+        >
+          Share
+        </p>
       </div>
 
       <!-- Page 1 -->
@@ -52,6 +60,7 @@
           </div>
           <div class="create-input">
             <pre><textarea
+              class="story-create-input"
               type="text"
               placeholder="Write a caption..."
               v-model="storyToAdd.txt"
@@ -75,6 +84,7 @@
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { storyService } from "../services/story.service.local";
 import { svgService } from "../services/svg.service";
+import Driver from "../cmps/Driver.vue";
 
 export default {
   data() {
@@ -86,6 +96,7 @@ export default {
       imageUploaded: false,
       filePreview: null,
       user: null,
+      showGuidedTour: true,
     };
   },
   created() {
@@ -197,6 +208,12 @@ export default {
         this.$router.go(-1);
       }
     },
+    handleTourComplete() {
+      this.showGuidedTour = false;
+    },
+  },
+  components: {
+    Driver,
   },
 };
 </script>

@@ -18,12 +18,9 @@ export const storyService = {
 async function query(filterBy) {
   var stories = await storageService.query(STORAGE_KEY);
   if (filterBy.userId) {
-    // const regex = new RegExp(filterBy.txt, "i");
     stories = stories.filter((story) => story.by._id === filterBy.userId);
   }
-  // if (filterBy.price) {
-  //   stories = stories.filter((story) => story.price <= filterBy.price);
-  // }
+
   return stories;
 }
 

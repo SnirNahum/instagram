@@ -18,6 +18,7 @@ export const storyStore = {
   state: {
     stories: [],
     story: null,
+    guidedTourInProgress: false,
   },
   getters: {
     stories({ stories }) {
@@ -35,7 +36,7 @@ export const storyStore = {
       state.story = story;
     },
     addStory(state, { story }) {
-      state.stories.push(story);
+      state.stories.unshift(story);
     },
     updateStory(state, { story }) {
       const idx = state.stories.findIndex((c) => c._id === story._id);
@@ -48,6 +49,12 @@ export const storyStore = {
       const story = state.stories.find((story) => story._id === storyId);
       if (!story.comments) story.comments = [];
       story.comments.push(commentToAdd);
+    },
+    startGuidedTour(state) {
+      state.guidedTourInProgress = true;
+    },
+    completeGuidedTour(state) {
+      state.guidedTourInProgress = false;
     },
   },
   actions: {

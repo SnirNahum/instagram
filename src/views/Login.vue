@@ -2,8 +2,8 @@
   <section class="login-container">
     <div class="form-container">
       <div class="login-images">
-        <!-- <img src="../assets/imgs/screenshot2.png" /> -->
-        <!-- <img src="../assets/imgs/screenshot4.png" /> -->
+        <img src="../assets/imgs/screenshot2.png" />
+        <img src="../assets/imgs/screenshot4.png" />
       </div>
       <div class="login-form-wrapper">
         <div class="login-form">

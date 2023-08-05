@@ -1,6 +1,8 @@
 <template>
-  <h1>Explore</h1>
+  <!-- <Storry /> -->
 </template>
 <script>
-export default {};
+import Storry from "../cmps/Storry.vue";
+
+// export default { components: { Storry } };
 </script>

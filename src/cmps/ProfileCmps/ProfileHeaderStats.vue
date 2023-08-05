@@ -10,7 +10,6 @@
       <span>{{ user.following.length }}</span> Following
     </p>
   </section>
-  <!-- <pre>{{ user }}</pre> -->
   <h2 class="profile-header-username">{{ user.username }}</h2>
   <div class="profile-header-bio">
     <span>Love to travel and exploring</span>
@@ -28,9 +27,6 @@ export default {
       type: Array,
       requred: true,
     },
-  },
-  created() {
-    console.log(this.userStories);
   },
 };
 </script>

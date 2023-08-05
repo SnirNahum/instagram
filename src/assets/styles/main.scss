@@ -12,8 +12,9 @@
 @import "basics/forms";
 
 // Media queries
+@import "mq/mq.scss";
 
-@import "mq/mq.scss"; // Views
+// Views
 @import "cmps/Feed.scss";
 @import "cmps/LoginSignup.scss/Login.scss";
 //Side nav

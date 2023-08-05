@@ -46,6 +46,7 @@
       to="/storyCreate"
       icon="create"
       label="Create"
+      id="create"
       :class="{ active: $route.path === '/storyCreate' }"
       @update-active="updateActiveLink"
     />

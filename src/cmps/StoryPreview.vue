@@ -30,6 +30,9 @@ export default {
     addStoryLike(storyId, userId) {
       this.$emit("addStoryLike", storyId, userId);
     },
+    handleTourComplete() {
+      this.showGuidedTour = false;
+    },
   },
   components: {
     CommentAdd,

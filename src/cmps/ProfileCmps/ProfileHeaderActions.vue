@@ -1,11 +1,16 @@
 <template>
   <section class="profile-header-actions">
     <p>{{ user.fullname }}</p>
-    <section class="profile-header-actions-btn">
-      <button>Edit Profile</button>
-      <button>Dashboard</button>
+    <section v-if="userId !== _id" class="profile-header-actions-btn">
+      <button>Follow</button>
+      <button>Message</button>
       <button><i class="icon" v-html="getSvg('addUser')"></i></button>
       <i class="icon more" v-html="getSvg('moreProfile')"></i>
+    </section>
+    <section v-else class="profile-header-actions-btn">
+      <button>Edit profile</button>
+      <button>Dashboard</button>
+      <i class="icon" v-html="getSvg('settings')"></i>
     </section>
   </section>
 </template>
@@ -18,6 +23,12 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      userId: this.$route.params.userId,
+      _id: this.$store.getters.loggedinUser._id,
+    };
   },
   methods: {
     getSvg(moreProfile) {
