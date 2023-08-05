@@ -4,7 +4,7 @@
     <section v-if="userId !== _id" class="profile-header-actions-btn">
       <button>Follow</button>
       <button>Message</button>
-      <button><i class="icon" v-html="getSvg('addUser')"></i></button>
+      <!-- <button><i class="icon" v-html="getSvg('addUser')"></i></button> -->
       <i class="icon more" v-html="getSvg('moreProfile')"></i>
     </section>
     <section v-else class="profile-header-actions-btn">

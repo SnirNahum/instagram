@@ -13,8 +13,9 @@
             <router-link :to="`/profile/${story.by._id}`">
               <p>{{ story.by.username }}</p>
             </router-link>
-
-            <span>labels</span>
+            <span class="dot">&bull;</span>
+            <span>{{ getRelativeTime(story.createdAt) }}</span>
+            <!-- <span>labels</span> -->
           </div>
         </div>
         <hr />
@@ -58,6 +59,7 @@
 <script>
 import CommentAdd from "../cmps/Comment/CommentAdd.vue";
 import { showErrorMsg } from "../services/event-bus.service";
+import { getRelativeTime } from "../services/getRelativeTime.js";
 
 export default {
   props: ["storyId"],
@@ -100,6 +102,7 @@ export default {
         this.$router.go(-1);
       }
     },
+    getRelativeTime,
   },
   components: { CommentAdd },
 };

@@ -1,6 +1,6 @@
 <template>
   <section class="story-preview">
-    <StoryHeader :user="story.by" />
+    <StoryHeader :user="story.by" :story="story" />
     <StoryImage :imgUrl="story.imgUrl" />
     <StoryActions :story="story" @addStoryLike="addStoryLike" />
     <StoryComments :story="story" />

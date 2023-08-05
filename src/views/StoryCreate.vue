@@ -159,8 +159,8 @@ export default {
             username: this.user.username,
             fullname: this.user.fullname,
           };
-          this.storyToAdd.imgUrl = await this.uploadImage(this.file);
-
+          (this.storyToAdd.imgUrl = await this.uploadImage(this.file)),
+            (this.storyToAdd.createdAt = Date.now());
           await this.saveStory();
           showSuccessMsg("Story added");
 
